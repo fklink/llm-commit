@@ -78,3 +78,62 @@ test("installer preserves exit failures, blank output and spawn error codes", t 
   assert.equal(missing.error, "ENOENT");
   assert.equal(missing.status, null);
 });
+
+const { execFileSync, spawnSync } = require("node:child_process");
+function secretServiceFixture(t, mode) {
+  const root = launcherFixture(t, ["private/.keep"]);
+  const privateRoot = path.join(root, "private");
+  const hooks = path.join(root, "hooks.sh");
+  const marker = path.join(root, "host-ran");
+  fs.writeFileSync(hooks, [
+    'dbus-run-session() { shift; DBUS_SESSION_BUS_ADDRESS=fixture-bus "$@"; }',
+    'openssl() { printf "%064d\\n" 1; }',
+    'gnome-keyring-daemon() { cat >/dev/null; exec sleep 30; }',
+    'gdbus() {',
+    '  case "$*" in',
+    '    *NameHasOwner*) [[ "$FIXTURE_MODE" != bad-bus ]] || return 1; echo "(false,)" ;;',
+    '    *GetConnectionUnixProcessID*) [[ "$FIXTURE_MODE" != missing ]] || return 1; printf "(uint32 %s,)\\n" "$keyring_pid" ;;',
+    '    *ReadAlias*) echo "(objectpath \"/org/freedesktop/secrets/collection/login\",)" ;;',
+    '    *Properties.Get*Locked*) if [[ "$FIXTURE_MODE" == locked ]]; then echo "(<true>,)"; else echo "(<false>,)"; fi ;;',
+    '    *SearchItems*) if [[ -f "$FIXTURE_MARKER" && "$FIXTURE_MODE" != no-encryption ]]; then echo "([objectpath \"/org/freedesktop/secrets/collection/login/1\"], @ao [])"; else echo "(@ao [], @ao [])"; fi ;;',
+    '    *) return 2 ;;',
+    '  esac',
+    '}',
+    'timeout() { shift; "$@"; }',
+    'secret-tool() { case "$1" in store) cat >/dev/null; [[ "$FIXTURE_MODE" != uninitialized ]] ;; lookup) printf "%s" llm-commit-secret-service-dummy ;; clear) return 0 ;; esac; }',
+    'xvfb-run() { [[ "$DBUS_SESSION_BUS_ADDRESS" == fixture-bus ]] || return 2; touch "$FIXTURE_MARKER"; [[ "$FIXTURE_MODE" != host-fails ]]; }'
+  ].join("\n") + "\n");
+  const bash = process.platform === "win32"
+    ? path.resolve(execFileSync("git", ["--exec-path"], { encoding: "utf8" }).trim(), "../../../bin/bash.exe")
+    : "bash";
+  const unixPath = value => value.replace(/\\/g, "/");
+  const result = spawnSync(bash, ["scripts/ci/linux-secret-service.sh", "unused-host"], {
+    encoding: "utf8", timeout: 15000,
+    env: { ...process.env, BASH_ENV: unixPath(hooks), LLM_CI_PRIVATE: unixPath(privateRoot),
+      FIXTURE_MODE: mode, FIXTURE_MARKER: unixPath(marker) }
+  });
+  assert.ifError(result.error);
+  assert.deepEqual(fs.readdirSync(privateRoot), [".keep"], "private fixture must be removed");
+  return { ...result, hostRan: fs.existsSync(marker) };
+}
+test("Secret Service roundtrip gates the host and cleans the isolated session", t => {
+  const result = secretServiceFixture(t, "ready");
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(result.hostRan, true);
+  assert.match(result.stdout, /encrypted host keyring item observed/);
+});
+for (const [mode, message] of [
+  ["bad-bus", /D-Bus session unavailable/],
+  ["missing", /Secret Service did not become available/],
+  ["locked", /default collection is locked/],
+  ["uninitialized", /Secret Service store failed/],
+  ["no-encryption", /No host keyring item observed/],
+  ["host-fails", /Linux host tests failed/]
+]) {
+  test("Secret Service fails closed and cleans up: " + mode, t => {
+    const result = secretServiceFixture(t, mode);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, message);
+    assert.equal(result.hostRan, mode === "no-encryption" || mode === "host-fails");
+  });
+}

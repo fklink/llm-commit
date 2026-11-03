@@ -66,13 +66,13 @@ async function main() {
       }
       const output = path.join(roots().reports, "host-" + version + ".json");
       const launchArgs = [workspace, "--user-data-dir", profile, "--extensions-dir", extensions, "--disable-gpu", "--skip-welcome", "--skip-release-notes", "--disable-workspace-trust"];
-      if (process.platform === "linux") { launchArgs.push("--password-store=basic"); }
+      if (process.platform === "linux") { launchArgs.push("--password-store=gnome-libsecret"); }
       await runTests({ vscodeExecutablePath: executable, extensionDevelopmentPath: [helper], extensionTestsPath: path.join(project, "scripts/ci/installed-entry.cjs"), extensionTestsEnv: { ...fixtureEnv(), LLM_CI_HOST_TLS_REPORT: path.join(roots().reports, "tls-host-" + version + ".json"), LLM_COMMIT_INSTALLED_ROOT: extensions, LLM_COMMIT_COMPATIBILITY_REPORT: output, LLM_COMMIT_REAL_GIT_PROBE: "1", LLM_COMMIT_TEST_WORKSPACE_ROOT: workspace }, launchArgs });
       const report = JSON.parse(fs.readFileSync(output, "utf8"));
       assert.equal(report.status, "passed"); assert.equal(report.vscode, version); assert.equal(report.platform, process.platform); assert.equal(report.realInstalledGitGeneration?.status, "passed");
       assert.equal(hash(path.join(report.extensionPath, "dist/extension.js")), reference.productionBundleSHA256);
       const installedManifest = JSON.parse(fs.readFileSync(path.join(report.extensionPath, "package.json"), "utf8")); delete installedManifest.__metadata; assert.deepEqual(installedManifest, require("../../package.json"));
-      results.push({ version, status: "passed", node: report.node, platform: process.platform, arch: process.arch, sameVSIX: reference.sha256, realGitAndHTTP: true, consentUI: "simulated exact owned dummy origin", secretStorage: process.platform === "linux" ? "real API with explicit basic dummy-only backend; OS keyring NOT verified" : "real helper API; cross-session durability NOT verified" });
+      results.push({ version, status: "passed", node: report.node, platform: process.platform, arch: process.arch, sameVSIX: reference.sha256, realGitAndHTTP: true, consentUI: "simulated exact owned dummy origin", secretStorage: process.platform === "linux" ? "real API with explicit gnome-libsecret backend; isolated Secret Service verified by Linux wrapper" : "real helper API; cross-session durability NOT verified" });
     } catch (error) { results.push({ version, status: "failed", reason: error.message }); console.error("Host " + version + " failed: " + error.message); }
   }
   json("host-matrix.json", { results, mandatoryMinimum: "1.80.0", displayPresent: !!process.env.DISPLAY, platform: process.platform, arch: process.arch });

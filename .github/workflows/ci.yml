@@ -109,8 +109,12 @@ jobs:
         run: |
           command -v xvfb-run
           command -v dbus-run-session
-      - name: Install and test both mandatory hosts under Xvfb and a session bus
-        run: dbus-run-session -- xvfb-run -a node scripts/ci/run-hosts.cjs
+      - name: Install Linux Secret Service test tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends gnome-keyring libsecret-tools libglib2.0-bin
+      - name: Install and test both mandatory hosts under Xvfb and an isolated Secret Service
+        run: bash scripts/ci/linux-secret-service.sh node scripts/ci/run-hosts.cjs
       - name: Dependency and production audits
         if: ${{ !cancelled() }}
         run: node scripts/ci/tasks.cjs audit
