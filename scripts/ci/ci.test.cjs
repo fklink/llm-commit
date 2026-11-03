@@ -20,3 +20,61 @@ test("audit fingerprints are independent of finding/path order", () => { const r
 test("incomplete producer inspection is rejected even for an intact file", () => { const root = fs.mkdtempSync(path.join(os.tmpdir(), "llm-ci-reference-")), file = path.join(root, "dummy.vsix"); try { fs.writeFileSync(file, "dummy"); assert.throws(() => verifyArchive(file, { sha256: hash(file), entries: [] }), /Incomplete/); } finally { fs.unlinkSync(file); fs.rmdirSync(root); } });
 test("reports cannot overwrite the source checkout", () => { const previous = [process.env.LLM_CI_REPORTS, process.env.LLM_CI_PRIVATE]; try { process.env.LLM_CI_REPORTS = path.resolve(__dirname, "../.."); process.env.LLM_CI_PRIVATE = path.join(os.tmpdir(), "dummy-private-outside"); assert.throws(() => roots(), /outside the repository/); } finally { for (const [index, name] of ["LLM_CI_REPORTS", "LLM_CI_PRIVATE"].entries()) { if (previous[index] === undefined) { delete process.env[name]; } else { process.env[name] = previous[index]; } } } });
 test("CI bootstrap rejects disabled TLS before any global installation", () => { const previous = [process.env.GITHUB_ACTIONS, process.env.NODE_TLS_REJECT_UNAUTHORIZED]; try { process.env.GITHUB_ACTIONS = "true"; process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"; assert.throws(() => require("./bootstrap.cjs").main(), /TLS verification must remain enabled/); } finally { for (const [index, name] of ["GITHUB_ACTIONS", "NODE_TLS_REJECT_UNAUTHORIZED"].entries()) { if (previous[index] === undefined) { delete process.env[name]; } else { process.env[name] = previous[index]; } } } });
+
+const { resolveUnixLauncher, invokeInstaller } = require("./launcher.cjs");
+function launcherFixture(t, files) {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "llm-launcher-"));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  for (const relative of files) {
+    const file = path.join(root, relative);
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file, "", { mode: 0o755 });
+  }
+  return root;
+}
+test("Linux uses the official CLI launcher beside the downloaded runtime", t => {
+  const root = launcherFixture(t, ["code", "bin/code"]);
+  const runtime = path.join(root, "code");
+  assert.deepEqual(resolveUnixLauncher(runtime, "linux"), {
+    runtime, launcher: path.join(root, "bin/code")
+  });
+});
+test("macOS resolves the bundle executable rather than assuming Electron", t => {
+  const bundle = "Visual Studio Code.app/Contents/";
+  const root = launcherFixture(t, [bundle + "MacOS/Code", bundle + "Resources/app/bin/code", bundle + "Info.plist"]);
+  const guess = path.join(root, bundle, "MacOS/Electron");
+  const resolved = resolveUnixLauncher(guess, "darwin", plist => {
+    assert.equal(plist, path.join(root, bundle, "Info.plist"));
+    return "Code";
+  });
+  assert.equal(resolved.runtime, path.join(root, bundle, "MacOS/Code"));
+  assert.equal(resolved.launcher, path.join(root, bundle, "Resources/app/bin/code"));
+  assert.throws(() => resolveUnixLauncher(guess, "darwin", () => "../Code"), /invalid bundle executable/);
+  assert.throws(() => resolveUnixLauncher(guess, "darwin", () => "Missing"), /runtime.*ENOENT/);
+});
+test("missing or invalid CLI launchers are rejected before spawning", t => {
+  const root = launcherFixture(t, ["code"]);
+  const runtime = path.join(root, "code");
+  assert.throws(() => resolveUnixLauncher(runtime, "linux"), /launcher.*ENOENT/);
+  fs.mkdirSync(path.join(root, "bin/code"), { recursive: true });
+  assert.throws(() => resolveUnixLauncher(runtime, "linux"), /launcher.*regular file/);
+});
+test("installer passes VSIX and profile arguments literally and reports only safe output", () => {
+  const args = ["--install-extension", "fixture path/dummy.vsix", "--user-data-dir", "dummy profile"];
+  const script = "if (JSON.stringify(process.argv.slice(1)) !== " + JSON.stringify(JSON.stringify(args)) +
+    ") process.exit(2); console.log('Extension installed successfully.'); console.error('Authorization: Bearer dummy-secret');";
+  const result = invokeInstaller(process.execPath, ["-e", script, "--", ...args], process.env);
+  assert.equal(result.status, 0);
+  assert.equal(result.stdout.installed, true);
+  assert.equal(result.stderr.hadOutput, true);
+  assert.doesNotMatch(JSON.stringify(result), /dummy-secret|fixture path|dummy profile/);
+});
+test("installer preserves exit failures, blank output and spawn error codes", t => {
+  const failed = invokeInstaller(process.execPath, ["-e", "process.exit(1)"], process.env);
+  assert.equal(failed.status, 1);
+  assert.equal(failed.stderr.hadOutput, false);
+  const root = launcherFixture(t, []);
+  const missing = invokeInstaller(path.join(root, "missing"), [], process.env);
+  assert.equal(missing.error, "ENOENT");
+  assert.equal(missing.status, null);
+});

@@ -2,7 +2,7 @@ import * as assert from "node:assert/strict";
 import { execFile } from "node:child_process";
 import { promises as fs, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { basename, dirname, join, resolve } from "node:path";
+import { basename, dirname, join, relative, resolve } from "node:path";
 import { promisify } from "node:util";
 import { runInNewContext, testResponse } from "./transport-fixture";
 import type * as VSCode from "vscode";
@@ -21,6 +21,38 @@ interface RealGitAPI {
 }
 const exec = promisify(execFile);
 
+const fixturePrefix = "llm-commit-phase2-git-";
+async function createGitFixture(parent: string): Promise<string> {
+  const canonicalParent = await fs.realpath(parent);
+  return fs.mkdtemp(join(canonicalParent, fixturePrefix));
+}
+async function removeGitFixture(root: string, parent: string): Promise<void> {
+  const target = resolve(root);
+  assert.equal(relative(await fs.realpath(parent), dirname(target)), "");
+  assert.ok(basename(target).startsWith(fixturePrefix));
+  await fs.rm(target, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
+}
+
+suite("Git fixture paths", () => {
+  test("creates and cleans an owned repository through a temporary directory alias", async () => {
+    const outer = await createGitFixture(tmpdir());
+    try {
+      const physical = join(outer, "physical");
+      const alias = join(outer, "alias");
+      await fs.mkdir(physical);
+      await fs.symlink(physical, alias, "junction");
+      const fixture = await createGitFixture(alias);
+      assert.equal(relative(await fs.realpath(physical), dirname(fixture)), "");
+      await exec("git", ["init", "--quiet", fixture]);
+      await assert.rejects(removeGitFixture(fixture, outer));
+      await removeGitFixture(fixture, alias);
+      await assert.rejects(fs.access(fixture), { code: "ENOENT" });
+    } finally {
+      await removeGitFixture(outer, tmpdir());
+    }
+  });
+});
+
 suite("Phase 2 real Git integration", function () {
   this.timeout(20000);
   let vscode: typeof VSCode;
@@ -36,35 +68,38 @@ suite("Phase 2 real Git integration", function () {
     const extension = vscode.extensions.getExtension<{ getAPI(version: 1): RealGitAPI }>("vscode.git");
     assert.ok(extension, "Built-in Git extension must be available");
     await extension.activate(); git = extension.exports.getAPI(1);
-    root = await fs.mkdtemp(join(tmpdir(), "llm-commit-phase2-git-"));
+    // Canonicalize the parent before creating a repository via an 8.3 alias.
+    root = await createGitFixture(tmpdir());
     const repositories: RealRepository[] = [];
     for (const name of ["repo-a", "repo-b"]) {
       const folder = join(root, name); await fs.mkdir(folder);
       await exec("git", ["init", "--quiet", folder]);
       await fs.writeFile(join(folder, "dummy.txt"), `dummy staged ${name}\n`);
       await exec("git", ["-C", folder, "add", "dummy.txt"]);
-      const repo = await git.openRepository(vscode.Uri.file(folder)); assert.ok(repo);
+      const uri = vscode.Uri.file(folder);
+      const repo = await git.openRepository(uri) ?? git.getRepository(uri);
+      assert.ok(repo, "Expected the opened temporary Git repository");
+      assert.equal(relative(folder, await fs.realpath(repo.rootUri.fsPath)), "");
       await repo.status(); repositories.push(repo);
     }
     [a, b] = repositories;
   });
   suiteTeardown(async () => {
     if (!root) { return; }
-    for (const repo of git.repositories.filter(repo => repo.rootUri.fsPath.toLowerCase().startsWith(root!.toLowerCase()))) {
-      await vscode.commands.executeCommand("git.close", repo.rootUri);
+    try {
+      for (const repo of git.repositories.filter(repo => relative(root!, dirname(repo.rootUri.fsPath)) === "")) {
+        await vscode.commands.executeCommand("git.close", repo.rootUri);
+      }
+    } finally {
+      await removeGitFixture(root, tmpdir());
     }
-    // Only our own newly created temporary repositories may be removed.
-    const target = resolve(root);
-    assert.equal(dirname(target).toLowerCase(), resolve(tmpdir()).toLowerCase());
-    assert.ok(basename(target).startsWith("llm-commit-phase2-git-"));
-    await fs.rm(target, { recursive: true, force: true });
   });
   function command() {
     const handlers = new Map<string, (context?: unknown) => Promise<void>>();
     const subscriptions: VSCode.Disposable[] = [];
     const requests: Array<{ body: string; resolve(response: Response): void }> = [];
     const api = {
-      get repositories() { return git.repositories.filter(repo => repo.rootUri.fsPath.toLowerCase().startsWith(root!.toLowerCase())); },
+      get repositories() { return git.repositories.filter(repo => relative(root!, dirname(repo.rootUri.fsPath)) === ""); },
       onDidCloseRepository: git.onDidCloseRepository,
       getRepository: (resource: VSCode.Uri) => git.getRepository(resource),
     };
