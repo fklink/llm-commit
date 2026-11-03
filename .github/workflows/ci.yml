@@ -1,0 +1,170 @@
+name: LLM Commit CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: llm-commit-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CI: 'true'
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  windows:
+    name: Windows x64 / package once / Code 1.80 + 1.144
+    runs-on: windows-2025
+    timeout-minutes: 45
+    outputs:
+      vsix_ready: ${{ steps.vsix_upload.outcome == 'success' }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+      - name: Bootstrap pinned pnpm (11.25.0)
+        run: node scripts/ci/bootstrap.cjs
+      - name: Record environment and prepare private dummy TLS fixtures
+        run: node scripts/ci/tasks.cjs prepare
+      - name: Frozen project installation
+        run: node scripts/ci/tasks.cjs install
+      - name: Lint, types, both builds, headless and packaging regressions
+        run: node scripts/ci/tasks.cjs quality
+      - name: Frozen isolated packager (VSCE 3.9.2)
+        run: node scripts/ci/tasks.cjs install-packager
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24.22.1'
+          package-manager-cache: false
+      - name: Build and inspect the single complete VSIX
+        run: node scripts/ci/tasks.cjs package
+      - name: Archive the exact inspected package for all platforms
+        id: vsix_upload
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: llm-commit-vsix
+          path: ${{ runner.temp }}/llm-commit-ci-reports/package/
+          if-no-files-found: error
+          retention-days: 14
+          overwrite: true
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        if: ${{ !cancelled() }}
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+      - name: Install and test both mandatory VS Code versions
+        run: node scripts/ci/run-hosts.cjs
+      - name: Dependency and production audits; separate packager gate
+        if: ${{ !cancelled() }}
+        run: node scripts/ci/tasks.cjs audit --packager
+      - name: Collect selected diagnostics (never private keys or storage DBs)
+        if: ${{ always() }}
+        run: node scripts/ci/tasks.cjs diagnostics
+      - name: Archive Windows test and error reports
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: windows-reports-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/llm-commit-ci-reports/
+            !${{ runner.temp }}/llm-commit-ci-reports/package/*.vsix
+          if-no-files-found: warn
+          retention-days: 14
+
+  linux:
+    name: Linux x64 / Code 1.80 + 1.144 / same VSIX
+    runs-on: ubuntu-22.04
+    needs: windows
+    if: ${{ !cancelled() && needs.windows.outputs.vsix_ready == 'true' }}
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+      - run: node scripts/ci/bootstrap.cjs
+      - run: node scripts/ci/tasks.cjs prepare
+      - run: node scripts/ci/tasks.cjs install
+      - run: node scripts/ci/tasks.cjs quality
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: llm-commit-vsix
+          path: ${{ runner.temp }}/llm-commit-ci-reports/package/
+      - name: Check display dependencies without changing OS security settings
+        run: |
+          command -v xvfb-run
+          command -v dbus-run-session
+      - name: Install and test both mandatory hosts under Xvfb and a session bus
+        run: dbus-run-session -- xvfb-run -a node scripts/ci/run-hosts.cjs
+      - name: Dependency and production audits
+        if: ${{ !cancelled() }}
+        run: node scripts/ci/tasks.cjs audit
+      - name: Collect selected diagnostics
+        if: ${{ always() }}
+        run: node scripts/ci/tasks.cjs diagnostics
+      - name: Archive Linux test and error reports
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: linux-reports-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/llm-commit-ci-reports/
+            !${{ runner.temp }}/llm-commit-ci-reports/package/*.vsix
+          if-no-files-found: warn
+          retention-days: 14
+
+  macos:
+    name: macOS Intel / Code 1.80 + 1.144 / same VSIX
+    runs-on: macos-15-intel
+    needs: windows
+    if: ${{ !cancelled() && needs.windows.outputs.vsix_ready == 'true' }}
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+      - run: node scripts/ci/bootstrap.cjs
+      - run: node scripts/ci/tasks.cjs prepare
+      - run: node scripts/ci/tasks.cjs install
+      - run: node scripts/ci/tasks.cjs quality
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: llm-commit-vsix
+          path: ${{ runner.temp }}/llm-commit-ci-reports/package/
+      - name: Install and test both mandatory VS Code versions
+        run: node scripts/ci/run-hosts.cjs
+      - name: Dependency and production audits
+        if: ${{ !cancelled() }}
+        run: node scripts/ci/tasks.cjs audit
+      - name: Collect selected diagnostics
+        if: ${{ always() }}
+        run: node scripts/ci/tasks.cjs diagnostics
+      - name: Archive macOS test and error reports
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: macos-reports-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/llm-commit-ci-reports/
+            !${{ runner.temp }}/llm-commit-ci-reports/package/*.vsix
+          if-no-files-found: warn
+          retention-days: 14

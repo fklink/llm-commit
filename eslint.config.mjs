@@ -3,7 +3,6 @@ import tsParser from "@typescript-eslint/parser";
 
 export default [{
     files: ["**/*.ts"],
-}, {
     plugins: {
         "@typescript-eslint": typescriptEslint,
     },
@@ -20,9 +19,9 @@ export default [{
             format: ["camelCase", "PascalCase"],
         }],
 
-        curly: "warn",
-        eqeqeq: "warn",
-        "no-throw-literal": "warn",
+        curly: "error",
+        eqeqeq: "error",
+        "no-throw-literal": "error",
         semi: "warn",
     },
 }];

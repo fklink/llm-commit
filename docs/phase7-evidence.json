@@ -1,0 +1,679 @@
+{
+  "date": "2026-11-02",
+  "phase": 7,
+  "scope": "Explicit removal of native Apple provider; four HTTP providers only; no publication",
+  "artifactRoot": "<TEMP_DIR>\\llm-commit-phase7-RUN",
+  "providers": [
+    "custom",
+    "lm-studio",
+    "ollama",
+    "openai"
+  ],
+  "minimum": "^1.80.0",
+  "legacyPolicy": "Reject apple with explicit provider-selection message; no automatic migration, settings change, key reassignment or request",
+  "securityArchitectureChanged": false,
+  "gitBehaviorChanged": false,
+  "dependenciesChanged": false,
+  "lockSHA256": "33e277a06c5c4fb0371bd00a91ae00264398b3862c86d5d409f2914abe07e447",
+  "scopeVerification": {
+    "modified": [
+      "AGENTS.md",
+      "docs/DECISIONS.md",
+      "docs/ISSUES.md",
+      "docs/PROJECT_STATUS.md",
+      "docs/ROADMAP.md",
+      "scripts/compatibility-probe.cjs",
+      "scripts/inspect-test-vsix.cjs",
+      "scripts/installed-platform-suite.cjs",
+      "scripts/package-test-vsix.cjs",
+      "scripts/package-validation.cjs",
+      "scripts/package-validation.test.cjs",
+      "src/test/lifecycle.test.ts",
+      "src/test/provider.test.ts",
+      "src/test/security.test.ts",
+      ".gitignore",
+      ".vscodeignore",
+      "CHANGELOG.md",
+      "README.md",
+      "package.json",
+      "src/extension.ts"
+    ],
+    "deleted": [
+      "scripts/validate-apple.cjs",
+      "swift/fm-cli/Package.swift",
+      "swift/fm-cli/Sources/main.swift"
+    ],
+    "historicalReportsVerified": 18,
+    "changedHistoricalReports": [],
+    "unchangedSecurity": true,
+    "unchangedTransport": true,
+    "unchangedLock": true,
+    "unchangedOverrides": true,
+    "protectedFunctions": [
+      "createApiSecurity",
+      "getGitAPI",
+      "repositoryKey",
+      "isRepositoryOpen",
+      "isContextUri",
+      "selectRepository",
+      "getStagedDiff",
+      "preserveGeneratedMessage",
+      "getProviderConfig",
+      "resolveModel",
+      "buildPrompt",
+      "parseCompletion",
+      "generateWithOpenAI",
+      "timeoutMilliseconds"
+    ],
+    "assertionComparison": {
+      "src/test/generation.test.ts": {
+        "removed": [],
+        "added": [],
+        "changed": []
+      },
+      "src/test/git.integration.test.ts": {
+        "removed": [],
+        "added": [],
+        "changed": []
+      },
+      "src/test/lifecycle.test.ts": {
+        "removed": [
+          "\"Apple success retains buffer and native timeout limits\"",
+          "\"user cancellation terminates the Apple process without a notice\"",
+          "\"Apple timeout never exceeds the existing sixty-second limit\"",
+          "\"early Apple exit is controlled and does not disclose stderr\"",
+          "\"stdin stream errors are handled and terminate the process\"",
+          "\"synchronous stdin failures also terminate the process\"",
+          "\"deactivation terminates Apple and ignores late output\"",
+          "\"missing Apple binary receives a static actionable error\"",
+          "\"a real child reads stdin, exits successfully and releases resources\"",
+          "\"user cancellation really terminates a running child\"",
+          "\"timeout really terminates a running child\"",
+          "\"deactivation waits for a real child to close\"",
+          "\"shutdown simultaneously terminates an Apple child and an HTTP request\"",
+          "\"a real missing executable is handled without unhandled process or pipe errors\""
+        ],
+        "added": [
+          "\"shutdown simultaneously aborts independent HTTP requests\""
+        ],
+        "changed": []
+      },
+      "src/test/provider.test.ts": {
+        "removed": [
+          "\"Apple ignores the irrelevant model setting and performs no HTTP request\"",
+          "\"Apple and HTTP use exactly the same prompt builder\"",
+          "\"Apple validates prompt and limit before starting a child process\""
+        ],
+        "added": [
+          "\"manifest exposes exactly the four HTTP providers\"",
+          "\"prepublish needs only the JavaScript production build\"",
+          "\"legacy Apple selection in \" + source + \" settings cannot send or mutate credentials\""
+        ],
+        "changed": []
+      },
+      "src/test/security.test.ts": {
+        "removed": [
+          "\"Apple provider still uses the existing platform path without HTTP\""
+        ],
+        "added": [
+          "\"removed Apple provider fails closed without HTTP\""
+        ],
+        "changed": []
+      },
+      "src/test/transport.test.ts": {
+        "removed": [],
+        "added": [],
+        "changed": []
+      },
+      "src/test/extension.test.ts": {
+        "removed": [],
+        "added": [],
+        "changed": []
+      }
+    }
+  },
+  "newFiles": [
+    "docs/phase7-evidence.json",
+    "docs/phase7-removal.md"
+  ],
+  "redTests": {
+    "providerRegressionsFailed": 4,
+    "headlessLog": "red-headless.log",
+    "packagingLog": "red-packaging.log"
+  },
+  "checks": {
+    "frozenInstall": 0,
+    "lint": 0,
+    "typecheck": 0,
+    "testCompilation": 0,
+    "developmentBuild": 0,
+    "productionBuild": 0,
+    "regularPrepublish": 0,
+    "headlessWithTLS": {
+      "passed": 205,
+      "pendingHostOnly": 7,
+      "exit": 0
+    },
+    "headlessWithoutTLS": {
+      "passed": 204,
+      "pending": 8,
+      "exit": 0
+    },
+    "installedHosts": {
+      "minimumPassed": 214,
+      "currentPassed": 214,
+      "exit": 0
+    },
+    "packaging": {
+      "passed": 17,
+      "failed": 0,
+      "exit": 0
+    },
+    "additionalTLS": {
+      "passed": 9,
+      "exit": 0
+    },
+    "fullVSIXBuild": 0,
+    "isolatedInstallation": {
+      "minimum": 0,
+      "current": 0
+    },
+    "inspection": 0,
+    "projectAuditExit": 1,
+    "productionAuditExit": 0,
+    "packagerAuditExit": 1,
+    "gitDiffCheck": 0
+  },
+  "installedHosts": {
+    "minimum": {
+      "vscode": "1.80.0",
+      "node": "16.17.1",
+      "platform": "win32",
+      "arch": "x64",
+      "remoteName": null,
+      "fetch": "undefined",
+      "AbortController": "function",
+      "AbortSignal": "function",
+      "extensionPath": "<TEMP_DIR>\\llm-commit-phase7-RUN\\minimum\\extensions\\evertjunior.llm-commit-0.2.0",
+      "extensionKind": 1,
+      "activation": true,
+      "gitApi": true,
+      "repositoryRoots": [
+        "file:///REDACTED_TEMP/llm-commit-phase7-RUN/minimum/workspace"
+      ],
+      "workspaceFolders": 1,
+      "secretStorage": true,
+      "nativeHttp": true,
+      "installedBundleHttpGeneration": true,
+      "realGitCommand": {
+        "trusted": true,
+        "configuredProvider": "custom",
+        "stagedDiffLength": 1854,
+        "hits": 1,
+        "simulatedConsentResponses": 1
+      },
+      "realInstalledGitGeneration": {
+        "status": "passed",
+        "provider": "custom",
+        "requests": 1,
+        "stagedDiffObserved": true,
+        "scmInputUpdated": true,
+        "authorizationHeaderAbsent": true,
+        "gitAndHttpDoublesUsed": false,
+        "consentUI": "exact owned origin confirmation simulated"
+      },
+      "status": "passed"
+    },
+    "current": {
+      "vscode": "1.144.0",
+      "node": "24.22.1",
+      "platform": "win32",
+      "arch": "x64",
+      "remoteName": null,
+      "fetch": "function",
+      "AbortController": "function",
+      "AbortSignal": "function",
+      "extensionPath": "<TEMP_DIR>\\llm-commit-phase7-RUN\\current\\extensions\\evertjunior.llm-commit-0.2.0",
+      "extensionKind": 1,
+      "activation": true,
+      "gitApi": true,
+      "repositoryRoots": [
+        "file:///REDACTED_TEMP/llm-commit-phase7-RUN/current/workspace"
+      ],
+      "workspaceFolders": 1,
+      "secretStorage": true,
+      "nativeHttp": true,
+      "installedBundleHttpGeneration": true,
+      "realGitCommand": {
+        "trusted": true,
+        "configuredProvider": "custom",
+        "stagedDiffLength": 309,
+        "hits": 1,
+        "simulatedConsentResponses": 1
+      },
+      "realInstalledGitGeneration": {
+        "status": "passed",
+        "provider": "custom",
+        "requests": 1,
+        "stagedDiffObserved": true,
+        "scmInputUpdated": true,
+        "authorizationHeaderAbsent": true,
+        "gitAndHttpDoublesUsed": false,
+        "consentUI": "exact owned origin confirmation simulated"
+      },
+      "status": "passed"
+    }
+  },
+  "packaging": {
+    "productionBundleSHA256": "519dfcc2228c276dd6bce455dfcbb8eb6800c0c488e6d3a64ce19797da371675",
+    "kind": "complete HTTP-provider VSIX; publication not authorized",
+    "bytes": 55169,
+    "uncompressedBytes": 95897,
+    "sha256": "f2fbf4526fd9f5a4bd83f9b7ec207411f88ca8733921ed48973ed29fed246915",
+    "entries": [
+      {
+        "path": "extension.vsixmanifest",
+        "bytes": 2794,
+        "mode": "100664"
+      },
+      {
+        "path": "[Content_Types].xml",
+        "bytes": 462,
+        "mode": "100664"
+      },
+      {
+        "path": "extension/package.json",
+        "bytes": 6702,
+        "mode": "100644"
+      },
+      {
+        "path": "extension/readme.md",
+        "bytes": 23981,
+        "mode": "100664"
+      },
+      {
+        "path": "extension/LICENSE.txt",
+        "bytes": 1083,
+        "mode": "100666"
+      },
+      {
+        "path": "extension/changelog.md",
+        "bytes": 6378,
+        "mode": "100664"
+      },
+      {
+        "path": "extension/dist/extension.js",
+        "bytes": 22496,
+        "mode": "100666"
+      },
+      {
+        "path": "extension/images/icon.png",
+        "bytes": 32001,
+        "mode": "100666"
+      }
+    ],
+    "nativeProviderIntegration": false,
+    "developerArtifacts": false,
+    "credentialPatternScan": "no matches; not a proof that arbitrary secrets cannot exist",
+    "vscodeMinimum": "^1.80.0"
+  },
+  "audits": {
+    "project": {
+      "advisories": {
+        "1113041": {
+          "findings": [
+            {
+              "version": "5.100.2",
+              "paths": [
+                ".>ts-loader>webpack",
+                ".>webpack",
+                ".>webpack-cli>@webpack-cli/configtest>webpack",
+                ".>webpack-cli>@webpack-cli/info>webpack",
+                ".>webpack-cli>@webpack-cli/serve>webpack",
+                ".>webpack-cli>webpack"
+              ],
+              "dev": true,
+              "optional": false,
+              "bundled": false
+            }
+          ],
+          "id": 1113041,
+          "title": "webpack buildHttp: allowedUris allow-list bypass via URL userinfo (@) leading to build-time SSRF behavior",
+          "module_name": "webpack",
+          "vulnerable_versions": ">=5.49.0 <=5.104.0",
+          "patched_versions": ">=5.104.1",
+          "severity": "low",
+          "cwe": "CWE-918",
+          "github_advisory_id": "GHSA-8fgc-7cc6-rx7x",
+          "url": "https://github.com/advisories/GHSA-8fgc-7cc6-rx7x"
+        },
+        "1113042": {
+          "findings": [
+            {
+              "version": "5.100.2",
+              "paths": [
+                ".>ts-loader>webpack",
+                ".>webpack",
+                ".>webpack-cli>@webpack-cli/configtest>webpack",
+                ".>webpack-cli>@webpack-cli/info>webpack",
+                ".>webpack-cli>@webpack-cli/serve>webpack",
+                ".>webpack-cli>webpack"
+              ],
+              "dev": true,
+              "optional": false,
+              "bundled": false
+            }
+          ],
+          "id": 1113042,
+          "title": "webpack buildHttp HttpUriPlugin allowedUris bypass via HTTP redirects → SSRF + cache persistence",
+          "module_name": "webpack",
+          "vulnerable_versions": ">=5.49.0 <5.104.0",
+          "patched_versions": ">=5.104.0",
+          "severity": "low",
+          "cwe": "CWE-918",
+          "github_advisory_id": "GHSA-38r7-794h-5758",
+          "url": "https://github.com/advisories/GHSA-38r7-794h-5758"
+        },
+        "1244012": {
+          "findings": [
+            {
+              "version": "9.0.9",
+              "paths": [
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/parser>@typescript-eslint/typescript-estree>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/typescript-estree>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>@typescript-eslint/typescript-estree>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>@typescript-eslint/typescript-estree>minimatch",
+                ".>@typescript-eslint/parser>@typescript-eslint/typescript-estree>minimatch",
+                ".>@vscode/test-cli>glob>minimatch",
+                ".>@vscode/test-cli>minimatch"
+              ],
+              "dev": true,
+              "optional": false,
+              "bundled": false
+            },
+            {
+              "version": "3.1.5",
+              "paths": [
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/parser>eslint>@eslint/eslintrc>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/parser>eslint>@humanwhocodes/config-array>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/parser>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/parser>eslint>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>@eslint/eslintrc>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>@humanwhocodes/config-array>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>eslint>@eslint/eslintrc>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>eslint>@humanwhocodes/config-array>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>eslint>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>eslint>@eslint/eslintrc>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>eslint>@humanwhocodes/config-array>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>eslint>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>@eslint/eslintrc>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>@humanwhocodes/config-array>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>eslint>@eslint/eslintrc>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>eslint>@humanwhocodes/config-array>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+                ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>eslint>minimatch",
+                ".>@typescript-eslint/eslint-plugin>eslint>@eslint/eslintrc>minimatch",
+                ".>@typescript-eslint/eslint-plugin>eslint>@humanwhocodes/config-array>minimatch",
+                ".>@typescript-eslint/eslint-plugin>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+                ".>@typescript-eslint/eslint-plugin>eslint>minimatch",
+                ".>@typescript-eslint/parser>eslint>@eslint/eslintrc>minimatch",
+                ".>@typescript-eslint/parser>eslint>@humanwhocodes/config-array>minimatch",
+                ".>@typescript-eslint/parser>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+                ".>@typescript-eslint/parser>eslint>minimatch",
+                ".>@vscode/test-cli>c8>test-exclude>glob>minimatch",
+                ".>@vscode/test-cli>c8>test-exclude>minimatch",
+                ".>eslint>@eslint/eslintrc>minimatch",
+                ".>eslint>@humanwhocodes/config-array>minimatch",
+                ".>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+                ".>eslint>minimatch"
+              ],
+              "dev": true,
+              "optional": false,
+              "bundled": false
+            },
+            {
+              "version": "5.1.9",
+              "paths": [
+                ".>@vscode/test-cli>mocha>glob>minimatch",
+                ".>@vscode/test-cli>mocha>minimatch",
+                ".>mocha>glob>minimatch",
+                ".>mocha>minimatch"
+              ],
+              "dev": true,
+              "optional": false,
+              "bundled": false
+            }
+          ],
+          "id": 1244012,
+          "title": "minimatch has potential denial of service via globparts amplification",
+          "module_name": "minimatch",
+          "vulnerable_versions": "<11.0.1",
+          "patched_versions": ">=11.0.1",
+          "severity": "moderate",
+          "cwe": "CWE-405",
+          "github_advisory_id": "GHSA-g3hv-75wg-m249",
+          "url": "https://github.com/advisories/GHSA-g3hv-75wg-m249"
+        },
+        "1244013": {
+          "findings": [
+            {
+              "version": "10.5.0",
+              "paths": [
+                ".>@vscode/test-cli>glob"
+              ],
+              "dev": true,
+              "optional": false,
+              "bundled": false
+            }
+          ],
+          "id": 1244013,
+          "title": "Glob: AbortSignal cancellation bypass allows post-timeout filesystem traversal",
+          "module_name": "glob",
+          "vulnerable_versions": ">=9.0.0 <=14.0.1",
+          "patched_versions": ">=14.0.2",
+          "severity": "moderate",
+          "cwe": "CWE-400",
+          "github_advisory_id": "GHSA-3g3m-2fjr-6pw4",
+          "url": "https://github.com/advisories/GHSA-3g3m-2fjr-6pw4"
+        }
+      },
+      "metadata": {
+        "vulnerabilities": {
+          "info": 0,
+          "low": 2,
+          "moderate": 2,
+          "high": 0,
+          "critical": 0
+        },
+        "dependencies": 0,
+        "devDependencies": 330,
+        "optionalDependencies": 2,
+        "totalDependencies": 330
+      }
+    },
+    "production": {
+      "advisories": {},
+      "metadata": {
+        "vulnerabilities": {
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "high": 0,
+          "critical": 0
+        },
+        "dependencies": 0,
+        "devDependencies": 0,
+        "optionalDependencies": 0,
+        "totalDependencies": 0
+      }
+    },
+    "isolatedPackager": {
+      "advisories": {
+        "1244012": {
+          "findings": [
+            {
+              "version": "10.2.6",
+              "paths": [
+                ".>@vscode/vsce>glob>minimatch"
+              ],
+              "dev": false,
+              "optional": false,
+              "bundled": false
+            },
+            {
+              "version": "3.1.5",
+              "paths": [
+                ".>@vscode/vsce>minimatch"
+              ],
+              "dev": false,
+              "optional": false,
+              "bundled": false
+            }
+          ],
+          "id": 1244012,
+          "title": "minimatch has potential denial of service via globparts amplification",
+          "module_name": "minimatch",
+          "vulnerable_versions": "<11.0.1",
+          "patched_versions": ">=11.0.1",
+          "severity": "moderate",
+          "cwe": "CWE-405",
+          "github_advisory_id": "GHSA-g3hv-75wg-m249",
+          "url": "https://github.com/advisories/GHSA-g3hv-75wg-m249"
+        },
+        "1244013": {
+          "findings": [
+            {
+              "version": "11.1.0",
+              "paths": [
+                ".>@vscode/vsce>glob"
+              ],
+              "dev": false,
+              "optional": false,
+              "bundled": false
+            }
+          ],
+          "id": 1244013,
+          "title": "Glob: AbortSignal cancellation bypass allows post-timeout filesystem traversal",
+          "module_name": "glob",
+          "vulnerable_versions": ">=9.0.0 <=14.0.1",
+          "patched_versions": ">=14.0.2",
+          "severity": "moderate",
+          "cwe": "CWE-400",
+          "github_advisory_id": "GHSA-3g3m-2fjr-6pw4",
+          "url": "https://github.com/advisories/GHSA-3g3m-2fjr-6pw4"
+        }
+      },
+      "metadata": {
+        "vulnerabilities": {
+          "info": 0,
+          "low": 0,
+          "moderate": 2,
+          "high": 0,
+          "critical": 0
+        },
+        "dependencies": 261,
+        "devDependencies": 0,
+        "optionalDependencies": 44,
+        "totalDependencies": 305
+      }
+    },
+    "projectAdvisorySetUnchanged": true,
+    "reviewDate": "2026-12-01 or before next release approval, whichever earlier; not extended to new findings/proven exploitability or packager"
+  },
+  "runtimeScan": {
+    "productionSourceNativeImports": false,
+    "manifestNativeProvider": false,
+    "bundleNativeIntegration": false,
+    "archiveNativeFiles": false,
+    "remainingAppleText": "Explicit obsolete-setting error, validation rejection patterns and historical documentation only"
+  },
+  "nativeBuildTools": {
+    "swift": false,
+    "xcodebuild": false,
+    "xcrun": false,
+    "required": false
+  },
+  "realGeneration": {
+    "minimum": "passed",
+    "current": "passed",
+    "gitAndHttpDoubles": false,
+    "consentAnswer": "Simulated, exact newly owned keyless Custom dummy origin only",
+    "genuineInteractiveConsentUI": "not performed; UI helper window ownership mapping failed",
+    "existingUserStateModified": false,
+    "workspaceTrustUI": "disabled in isolated hosts; policy regressions are simulated"
+  },
+  "notPerformed": [
+    "real Linux",
+    "real macOS HTTP",
+    "real Remote SSH",
+    "real Dev Containers",
+    "real WSL",
+    "real enterprise system trust store/PAC/authenticated proxy",
+    "real local-model or paid cloud inference"
+  ],
+  "removedFromProductScope": [
+    "Apple Foundation Models",
+    "Swift CLI",
+    "native model inference and process lifecycle",
+    "native binary packaging"
+  ],
+  "readiness": {
+    "score": 7,
+    "outOf": 10,
+    "rubric": {
+      "quality": 2,
+      "windowsMinimumCurrent": 2,
+      "completePackagingAndInstalledCommand": 2,
+      "otherRealPlatformsRemote": 0,
+      "securityEvidence": 1
+    },
+    "releaseRecommended": false
+  },
+  "toolIssues": [
+    "First host harness rejected drive-letter casing; path.relative comparison fixes the validation guard only",
+    "Preset ports 1234 and 11434 occupied; existing servers were never called/stopped; switched fixture to owned ephemeral Custom endpoint",
+    "Normal automated host consent returned no approval; final real-command test uses an exact-origin consent UI double and restores the UI method",
+    "Computer Use window state failed with owner-mapping mismatch; no UI security action was performed",
+    "Legacy VSCE/Yauzl Node-26 reader restriction retained; inspect under Node 24"
+  ],
+  "logSHA256": {
+    "compile.log": "5124cb7e5e9794e90dcd023f9e5fa7a77c9d88e044cb81896e81fca1d58907a5",
+    "current-install.log": "f87feb29b3f41ce0e9a573922f42224915a5f8b1391ec180800119bf458f123f",
+    "diff-check.log": "c443a82cfc517a42724950c68a6bc3ab55d380ccc05be5bf4d618630419cb39f",
+    "first-green.log": "7c9c75e95b32c945c15417406f788cec89aa01a15833f76bbb7e88501b5d45e0",
+    "frozen-install.log": "3c383856f9f534b4c2fbaa0ed7ee58faca1a428ab17db298c9827d7de3531cfa",
+    "headless-with-tls.log": "b0b6edcf50885fb843898539bc91c4318ee771d4a47d713e0e404a1cf9340062",
+    "inspection.log": "c2b829171e6951ec7bfd494e2cb090fb93d11f7b48ebab5aa844171faa7a3f42",
+    "installed-first-attempt.log": "534095c27fb707b11057c7d2f5fb0ec0861fd674ff4732bb92eca146a77c1bfe",
+    "installed-git-attempt.log": "f2a8695614b2bb6fca218c84cfa067371622c645faea98cc28795d4f820af392",
+    "installed-hosts.log": "4d27d4cdb8ce2e810c65845b0a323f0cf9338463d7748e314ed1cdbb41b7ab1b",
+    "installed-ports-attempt.log": "482c4bfe8b5a564d2c712ef6c23c4fb48ae9de71234d0f591f339281640961ac",
+    "lint.log": "a3f258b463eb621c2a80ba3d897b08d6cdaafdab31a08e19a287d374afed8c46",
+    "minimum-install.log": "f9181faf7da7e5072ead6ff763851922adb95d732f96f8154ead47c9691152a0",
+    "node16-tls-body-abort.log": "d130973550166a713516cfb335a673db06bb7f89e942934eaf2a4de87d059863",
+    "node16-tls-hostname-reject.log": "d922b3a01cc97c5f593835f50543457418057e745a73ec5cc047b30728b7aeea",
+    "node16-tls-trusted.log": "aca01bcba609f5f730c9eb5477a4a506f19957d7a7ed02d4e627e023c3a20795",
+    "node24-tls-body-abort.log": "96094de87425e4f3a6510b79afc3fc671532d6f99eee3775f1495b150f21420c",
+    "node24-tls-hostname-reject.log": "12d2f143922197888de15fade2982444c30809ad1f3b650215f33ba5b53ca6f3",
+    "node24-tls-trusted.log": "20f3f7ef8f2dbdccff9bf4c56fc844e989ca7fdc9ffe93421edbae9a0bb25cb6",
+    "node26-tls-body-abort.log": "f4487c9141abd132fd6730ec66456b2016f5f53e5bc21065c1ebe712b380df77",
+    "node26-tls-hostname-reject.log": "295f41d3fa267390152e77dd2ae39f60ca1a937e407a6c9c437706dfe6c5d222",
+    "node26-tls-trusted.log": "a8e0a7e7d4528697d9c330b73829892f42eaa37d9528d0431104beb22404d629",
+    "package.log": "a599ea78f5c7e3189726a5a1872cbc556baf8db78c288216015bb35feaa7d605",
+    "packaging-tests.log": "d28767267aa49abcfa409f36d361bb59f8cfd8394acdb981e32dc1e587c19c53",
+    "red-headless.log": "79c4a7120c1edc25d534e6a9fe9842bd724961c20dbd9691ba82ea490efbd8b2",
+    "red-packaging.log": "408cc5cc9eb5ba0ecf631b8f2e486dba413a65816ad564cea36bc06840965a28",
+    "scope-verification.log": "91706806741d622b34a845467b58954934824c9293e62e9b4eac7f0b4049afae",
+    "tls-extra.log": "1895d4104ca2bfc0cb1a2efa442c9e44f3c6b692c96787eb165405b49feab377",
+    "tls-fixture-generation.log": "3b444278f09cda035fbea7a1dd59872476c766c4460e494dfab79c1451194b7c",
+    "typecheck.log": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9",
+    "vsix-build.log": "68a63bb50d5a366e2842da5768c28d9cbffd01195858d842e3d5dd82a71c140e",
+    "wrong-host-fixture.log": "35f533ccfa1db5889c1477286f5e31c1d230f1976d0b1b38eb763493ba55e638"
+  }
+}

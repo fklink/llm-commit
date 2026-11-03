@@ -1,0 +1,9 @@
+# Keep pretest behavior previously requested in .npmrc (pnpm 11 uses YAML).
+enablePrePostScripts: true
+# Installation is explicit and frozen; running a tool must not mutate dependencies.
+# This also avoids silently reverting an exFAT hoisted installation to symlinks.
+verifyDepsBeforeRun: false
+
+overrides:
+  "mocha@10>serialize-javascript": 7.1.3
+  "terser-webpack-plugin@5>serialize-javascript": 7.1.3

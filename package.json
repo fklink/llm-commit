@@ -3,7 +3,7 @@
   "displayName": "LLM Commit",
   "publisher": "evertjunior",
   "icon": "images/icon.png",
-  "description": "Generate Git commit messages using local or cloud LLMs — supports Apple Foundation Models, LM Studio, Ollama, and OpenAI.",
+  "description": "Generate Git commit messages using LM Studio, Ollama, OpenAI and Custom OpenAI-compatible APIs.",
   "version": "0.2.0",
   "repository": {
     "type": "git",
@@ -11,7 +11,8 @@
   },
   "license": "MIT",
   "engines": {
-    "vscode": "^1.80.0"
+    "vscode": "^1.80.0",
+    "node": ">=22.13.0"
   },
   "categories": [
     "SCM Providers"
@@ -23,6 +24,14 @@
         "command": "llm-commit.generate",
         "title": "LLM Commit: Generate Message",
         "icon": "$(sparkle)"
+      },
+      {
+        "command": "llm-commit.setApiKey",
+        "title": "LLM Commit: Set API Key"
+      },
+      {
+        "command": "llm-commit.removeApiKey",
+        "title": "LLM Commit: Remove API Key"
       }
     ],
     "menus": {
@@ -40,14 +49,12 @@
         "llm-commit.provider": {
           "type": "string",
           "enum": [
-            "apple",
             "custom",
             "lm-studio",
             "ollama",
             "openai"
           ],
           "enumDescriptions": [
-            "Apple Foundation Models — on-device, no setup required (macOS 26+, Apple Silicon)",
             "Custom configuration using manual URL and API key",
             "LM Studio (http://127.0.0.1:1234/v1/chat/completions)",
             "Ollama with OpenAI compatibility (http://127.0.0.1:11434/v1/chat/completions)",
@@ -64,37 +71,80 @@
         "llm-commit.apiKey": {
           "type": "string",
           "default": "",
-          "description": "API key for the OpenAI-compatible API (if required)."
+          "description": "API key for the OpenAI-compatible API (if required).",
+          "deprecationMessage": "Use LLM Commit: Set API Key to store a credential for an explicitly authorized provider and API origin. This legacy setting is never sent directly.",
+          "ignoreSync": true
         },
         "llm-commit.model": {
-          "type": "string",
-          "default": "qwen2.5-coder-7b-instruct",
-          "description": "Model to use for generation."
+          "type": [
+            "object",
+            "string"
+          ],
+          "default": {},
+          "description": "Provider-to-model overrides (lm-studio, ollama, openai, custom). An empty object uses provider defaults. A legacy string explicitly overrides all HTTP providers.",
+          "properties": {
+            "lm-studio": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "ollama": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "openai": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "custom": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "additionalProperties": false,
+          "minLength": 1,
+          "pattern": "\\S"
         },
         "llm-commit.prompt": {
           "type": "string",
           "default": "Generate a git commit message following the Conventional Commits specification for the changes below.\n\n**Format:** <type>(<optional scope>): <description>\n\n**Types:**\n- feat: A new feature\n- fix: A bug fix\n- docs: Documentation changes\n- style: Code style changes (formatting, whitespace, no logic change)\n- refactor: Code restructuring without changing behavior\n- perf: Performance improvements\n- test: Adding or updating tests\n- build: Build system or dependency changes\n- ci: CI/CD configuration changes\n- chore: Routine tasks, maintenance\n\n**Rules:**\n- Use imperative, present tense (e.g., \"add\" not \"added\")\n- Keep the description under 50 characters\n- Lowercase the description (no capital start, no period)\n- Add scope in parentheses if applicable (e.g., `feat(auth):`)\n- For breaking changes, add `!` before colon (e.g., `feat!:`)\n\n**Diff:**\n```diff\n{diff}\n```\n\n**Commit message:**",
-          "description": "Prompt template for the LLM. Use '{diff}' as placeholder for the git diff."
+          "description": "Prompt template for the LLM. Use '{diff}' as placeholder for the git diff.",
+          "minLength": 1,
+          "pattern": "\\{diff\\}",
+          "patternErrorMessage": "Include at least one {diff} placeholder; every placeholder receives the literal diff."
         },
         "llm-commit.maxDiffLength": {
-          "type": "number",
+          "type": "integer",
           "default": 4000,
-          "description": "Maximum length of the git diff (in characters) to send to the LLM. Prevents overly long requests."
+          "description": "Maximum diff length in Unicode code points (1–100000). Longer diffs are truncated before prompt insertion.",
+          "minimum": 1,
+          "maximum": 100000
+        },
+        "llm-commit.timeoutSeconds": {
+          "type": "integer",
+          "default": 120,
+          "minimum": 1,
+          "maximum": 600,
+          "description": "HTTP transport and response-body timeout in seconds (1–600), starting after authorization. Repository selection and consent do not consume this timeout."
         }
       }
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run build:swift && npm run package",
-    "build:swift": "cd swift/fm-cli && swift build -c release && mkdir -p ../../bin && cp $(swift build -c release --show-bin-path)/fm-cli ../../bin/fm-cli",
+    "vscode:prepublish": "npm run package",
     "compile": "webpack",
     "watch": "webpack --watch",
     "package": "webpack --mode production --devtool hidden-source-map",
     "compile-tests": "tsc -p . --outDir out",
     "watch-tests": "tsc -p . -w --outDir out",
     "pretest": "npm run compile-tests && npm run compile && npm run lint",
-    "lint": "eslint src --ext ts",
-    "test": "vscode-test"
+    "lint": "eslint src --max-warnings 0",
+    "test": "vscode-test",
+    "typecheck": "tsc --noEmit",
+    "test:headless": "pnpm run compile-tests && node scripts/test-headless.cjs"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
@@ -105,9 +155,22 @@
     "@vscode/test-cli": "^0.0.10",
     "@vscode/test-electron": "^2.4.1",
     "eslint": "^8.44.0",
-    "typescript": "^5.1.6",
     "ts-loader": "^9.4.4",
+    "typescript": "^5.1.6",
     "webpack": "^5.88.1",
-    "webpack-cli": "^5.1.4"
-  }
+    "webpack-cli": "^5.1.4",
+    "mocha": "^10.8.2"
+  },
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": "limited",
+      "description": "HTTP generation and API key management require a trusted workspace.",
+      "restrictedConfigurations": [
+        "llm-commit.provider",
+        "llm-commit.apiUrl",
+        "llm-commit.apiKey"
+      ]
+    }
+  },
+  "packageManager": "pnpm@11.25.0"
 }

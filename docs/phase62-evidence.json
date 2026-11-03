@@ -1,0 +1,815 @@
+{
+  "date": "2026-11-01",
+  "scope": "Phase 6.2 validation only; no release",
+  "score": {
+    "value": 6,
+    "maximum": 10,
+    "rubric": {
+      "quality": 2,
+      "windowsMinimumAndCurrent": 2,
+      "packaging": 1,
+      "linuxAppleRemote": 0,
+      "securityEvidence": 1
+    }
+  },
+  "artifactRoot": "<TEMP_DIR>\\llm-commit-phase62-RUN",
+  "newFiles": [
+    "scripts/proxy-compatibility-probe.cjs",
+    "scripts/installed-platform-suite.cjs",
+    "scripts/validate-apple.cjs",
+    "docs/phase62-readiness.md",
+    "docs/phase62-platform-runbook.md",
+    "docs/phase62-evidence.json"
+  ],
+  "baseline": {
+    "fileCount": 53,
+    "changedExistingFiles": [],
+    "lockSHA256": "33e277a06c5c4fb0371bd00a91ae00264398b3862c86d5d409f2914abe07e447",
+    "unchangedExpected": true
+  },
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "osRelease": "10.0.26300",
+    "buildNode": "26.13.0",
+    "pnpm": "11.25.0",
+    "linuxAvailable": false,
+    "macAvailable": false,
+    "wslInstalled": false,
+    "containerRuntimeAvailable": false,
+    "authorizedSshTargetAvailable": false,
+    "systemProxy": {
+      "manualProxyEnabled": false,
+      "manualProxyConfigured": false,
+      "autoConfigConfigured": false,
+      "autoDetectEnabled": false
+    }
+  },
+  "checks": {
+    "frozenInstall": 0,
+    "lint": 0,
+    "typecheck": 0,
+    "compileTests": 0,
+    "developmentBuild": 0,
+    "productionBuild": 0,
+    "headlessWithoutTLS": {
+      "passed": 216,
+      "pending": 8
+    },
+    "headlessWithTLS": {
+      "passed": 217,
+      "pending": 7
+    },
+    "hostMinimum": {
+      "passed": 226,
+      "failed": 0
+    },
+    "hostCurrent": {
+      "passed": 226,
+      "failed": 0
+    },
+    "packageValidation": {
+      "passed": 10,
+      "failed": 0
+    },
+    "tlsAdditional": {
+      "passed": 9,
+      "failed": 0
+    },
+    "newScriptSyntax": 0,
+    "gitDiffCheck": 0,
+    "applePreflight": {
+      "exit": 2,
+      "status": "blocked on Windows; no Mac tests claimed"
+    }
+  },
+  "installedHosts": {
+    "minimum": {
+      "vscode": "1.80.0",
+      "node": "16.17.1",
+      "platform": "win32",
+      "arch": "x64",
+      "remoteName": null,
+      "fetch": "undefined",
+      "AbortController": "function",
+      "AbortSignal": "function",
+      "extensionPath": "<TEMP_DIR>\\llm-commit-phase61-RUN\\minimum\\extensions\\evertjunior.llm-commit-0.2.0",
+      "extensionKind": 1,
+      "activation": true,
+      "gitApi": true,
+      "repositoryRoots": [
+        "file:///REDACTED_TEMP/llm-commit-phase61-RUN/minimum/workspace"
+      ],
+      "workspaceFolders": 1,
+      "secretStorage": true,
+      "nativeHttp": true,
+      "installedBundleHttpGeneration": true,
+      "status": "passed"
+    },
+    "current": {
+      "vscode": "1.144.0",
+      "node": "24.22.1",
+      "platform": "win32",
+      "arch": "x64",
+      "remoteName": null,
+      "fetch": "function",
+      "AbortController": "function",
+      "AbortSignal": "function",
+      "extensionPath": "<TEMP_DIR>\\llm-commit-phase61-RUN\\current\\extensions\\evertjunior.llm-commit-0.2.0",
+      "extensionKind": 1,
+      "activation": true,
+      "gitApi": true,
+      "repositoryRoots": [
+        "file:///REDACTED_TEMP/llm-commit-phase61-RUN/current/workspace"
+      ],
+      "workspaceFolders": 1,
+      "secretStorage": true,
+      "nativeHttp": true,
+      "installedBundleHttpGeneration": true,
+      "status": "passed"
+    }
+  },
+  "proxy": {
+    "method": "Native compiled transport, real VS Code patched Node modules, owned loopback fixtures; no paid models, no real credentials",
+    "duringSession": {
+      "node16": {
+        "platform": "win32",
+        "node": "16.17.1",
+        "vscode": null,
+        "results": [
+          {
+            "label": "reserved-host-direct-control",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "environment-http-proxy",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "environment-https-proxy",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "local-provider-control",
+            "completed": true,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "closed-owned-port",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          }
+        ]
+      },
+      "node24": {
+        "platform": "win32",
+        "node": "24.22.1",
+        "vscode": null,
+        "results": [
+          {
+            "label": "reserved-host-direct-control",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "environment-http-proxy",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "environment-https-proxy",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "local-provider-control",
+            "completed": true,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "closed-owned-port",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          }
+        ]
+      },
+      "node26": {
+        "platform": "win32",
+        "node": "26.13.0",
+        "vscode": null,
+        "results": [
+          {
+            "label": "reserved-host-direct-control",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "environment-http-proxy",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "environment-https-proxy",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "local-provider-control",
+            "completed": true,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "closed-owned-port",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          }
+        ]
+      },
+      "hostMinimum": {
+        "platform": "win32",
+        "node": "16.17.1",
+        "vscode": "1.80.0",
+        "results": [
+          {
+            "label": "reserved-host-direct-control",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "environment-http-proxy",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "environment-https-proxy",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "vscode-http-proxy",
+            "completed": true,
+            "httpProxyHits": 1,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "vscode-https-proxy",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 1
+          },
+          {
+            "label": "vscode-https-tunnel-test-ca",
+            "completed": true,
+            "httpProxyHits": 0,
+            "connectProxyHits": 1
+          },
+          {
+            "label": "vscode-https-tunnel-untrusted-ca",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 1
+          },
+          {
+            "label": "local-provider-control",
+            "completed": true,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "closed-owned-port",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          }
+        ]
+      },
+      "hostCurrent": {
+        "platform": "win32",
+        "node": "24.22.1",
+        "vscode": "1.144.0",
+        "results": [
+          {
+            "label": "reserved-host-direct-control",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "environment-http-proxy",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "environment-https-proxy",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "vscode-http-proxy",
+            "completed": true,
+            "httpProxyHits": 1,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "vscode-https-proxy",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 1
+          },
+          {
+            "label": "vscode-https-tunnel-test-ca",
+            "completed": true,
+            "httpProxyHits": 0,
+            "connectProxyHits": 1
+          },
+          {
+            "label": "vscode-https-tunnel-untrusted-ca",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 1
+          },
+          {
+            "label": "local-provider-control",
+            "completed": true,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          },
+          {
+            "label": "closed-owned-port",
+            "completed": false,
+            "httpProxyHits": 0,
+            "connectProxyHits": 0
+          }
+        ]
+      }
+    },
+    "atStartup": [
+      {
+        "label": "node16",
+        "httpHits": 0,
+        "connectHits": 0
+      },
+      {
+        "label": "node24",
+        "httpHits": 0,
+        "connectHits": 0
+      },
+      {
+        "label": "node26",
+        "httpHits": 0,
+        "connectHits": 0
+      },
+      {
+        "label": "minimum",
+        "httpHits": 1,
+        "connectHits": 1
+      },
+      {
+        "label": "current",
+        "httpHits": 1,
+        "connectHits": 1
+      }
+    ],
+    "startupTargets": {
+      "node16": {
+        "platform": "win32",
+        "node": "16.17.1",
+        "http": false,
+        "https": false
+      },
+      "node24": {
+        "platform": "win32",
+        "node": "24.22.1",
+        "http": false,
+        "https": false
+      },
+      "node26": {
+        "platform": "win32",
+        "node": "26.13.0",
+        "http": false,
+        "https": false
+      },
+      "minimum": {
+        "platform": "win32",
+        "node": "16.17.1",
+        "vscode": "1.80.0",
+        "http": true,
+        "https": false
+      },
+      "current": {
+        "platform": "win32",
+        "node": "24.22.1",
+        "vscode": "1.144.0",
+        "http": true,
+        "https": false
+      }
+    },
+    "httpsProxyServerAuthenticationPacAndSystem": "not checked",
+    "tlsTunnelTrust": "Explicit test-only CA adapter, hostname and rejectUnauthorized preserved; not installed-extension enterprise CA proof"
+  },
+  "startupExtraCA": {
+    "method": "NODE_EXTRA_CA_CERTS set before child launch, native transport without test adapter, genuine owned TLS endpoint; Electron run-as-node is not a full extension host",
+    "node16": {
+      "node": "16.17.1",
+      "platform": "win32",
+      "NODE_EXTRA_CA_CERTS_configured": true,
+      "trusted": false
+    },
+    "node24": {
+      "node": "24.22.1",
+      "platform": "win32",
+      "NODE_EXTRA_CA_CERTS_configured": true,
+      "trusted": true
+    },
+    "node26": {
+      "node": "26.13.0",
+      "platform": "win32",
+      "NODE_EXTRA_CA_CERTS_configured": true,
+      "trusted": true
+    }
+  },
+  "packaging": {
+    "productionBundleSHA256": "fe73f2484264c3e58c8c1e4e0b89ff2cbdc8a7a0a39d8e5858571050da1df901",
+    "kind": "non-release test VSIX",
+    "bytes": 57065,
+    "uncompressedBytes": 100361,
+    "sha256": "a38efcfa61cc3b25713791868c2753137ee548a3e745062000c93f99b57f9d8e",
+    "entries": [
+      {
+        "path": "extension.vsixmanifest",
+        "bytes": 2857,
+        "mode": "100664"
+      },
+      {
+        "path": "[Content_Types].xml",
+        "bytes": 462,
+        "mode": "100664"
+      },
+      {
+        "path": "extension/readme.md",
+        "bytes": 25621,
+        "mode": "100664"
+      },
+      {
+        "path": "extension/PHASE6-TEST-PACKAGE.txt",
+        "bytes": 121,
+        "mode": "100666"
+      },
+      {
+        "path": "extension/package.json",
+        "bytes": 7167,
+        "mode": "100644"
+      },
+      {
+        "path": "extension/LICENSE.txt",
+        "bytes": 1083,
+        "mode": "100666"
+      },
+      {
+        "path": "extension/changelog.md",
+        "bytes": 5681,
+        "mode": "100664"
+      },
+      {
+        "path": "extension/images/icon.png",
+        "bytes": 32001,
+        "mode": "100666"
+      },
+      {
+        "path": "extension/dist/extension.js",
+        "bytes": 25368,
+        "mode": "100666"
+      }
+    ],
+    "appleBinary": false,
+    "developerArtifacts": false,
+    "credentialPatternScan": "no matches; not a proof that arbitrary secrets cannot exist",
+    "vscodeMinimum": "^1.80.0"
+  },
+  "projectAudit": {
+    "metadata": {
+      "vulnerabilities": {
+        "info": 0,
+        "low": 2,
+        "moderate": 2,
+        "high": 0,
+        "critical": 0
+      },
+      "dependencies": 0,
+      "devDependencies": 330,
+      "optionalDependencies": 2,
+      "totalDependencies": 330
+    },
+    "advisories": [
+      {
+        "id": "GHSA-8fgc-7cc6-rx7x",
+        "url": "https://github.com/advisories/GHSA-8fgc-7cc6-rx7x",
+        "package": "webpack",
+        "severity": "low",
+        "title": "webpack buildHttp: allowedUris allow-list bypass via URL userinfo (@) leading to build-time SSRF behavior",
+        "patched": ">=5.104.1",
+        "findings": [
+          {
+            "version": "5.100.2",
+            "paths": [
+              ".>ts-loader>webpack",
+              ".>webpack",
+              ".>webpack-cli>@webpack-cli/configtest>webpack",
+              ".>webpack-cli>@webpack-cli/info>webpack",
+              ".>webpack-cli>@webpack-cli/serve>webpack",
+              ".>webpack-cli>webpack"
+            ],
+            "dev": true,
+            "optional": false,
+            "bundled": false
+          }
+        ]
+      },
+      {
+        "id": "GHSA-38r7-794h-5758",
+        "url": "https://github.com/advisories/GHSA-38r7-794h-5758",
+        "package": "webpack",
+        "severity": "low",
+        "title": "webpack buildHttp HttpUriPlugin allowedUris bypass via HTTP redirects → SSRF + cache persistence",
+        "patched": ">=5.104.0",
+        "findings": [
+          {
+            "version": "5.100.2",
+            "paths": [
+              ".>ts-loader>webpack",
+              ".>webpack",
+              ".>webpack-cli>@webpack-cli/configtest>webpack",
+              ".>webpack-cli>@webpack-cli/info>webpack",
+              ".>webpack-cli>@webpack-cli/serve>webpack",
+              ".>webpack-cli>webpack"
+            ],
+            "dev": true,
+            "optional": false,
+            "bundled": false
+          }
+        ]
+      },
+      {
+        "id": "GHSA-g3hv-75wg-m249",
+        "url": "https://github.com/advisories/GHSA-g3hv-75wg-m249",
+        "package": "minimatch",
+        "severity": "moderate",
+        "title": "minimatch has potential denial of service via globparts amplification",
+        "patched": ">=11.0.1",
+        "findings": [
+          {
+            "version": "9.0.9",
+            "paths": [
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/parser>@typescript-eslint/typescript-estree>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/typescript-estree>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>@typescript-eslint/typescript-estree>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>@typescript-eslint/typescript-estree>minimatch",
+              ".>@typescript-eslint/parser>@typescript-eslint/typescript-estree>minimatch",
+              ".>@vscode/test-cli>glob>minimatch",
+              ".>@vscode/test-cli>minimatch"
+            ],
+            "dev": true,
+            "optional": false,
+            "bundled": false
+          },
+          {
+            "version": "3.1.5",
+            "paths": [
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/parser>eslint>@eslint/eslintrc>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/parser>eslint>@humanwhocodes/config-array>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/parser>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/parser>eslint>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>@eslint/eslintrc>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>@humanwhocodes/config-array>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>eslint>@eslint/eslintrc>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>eslint>@humanwhocodes/config-array>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>eslint>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>eslint>@eslint/eslintrc>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>eslint>@humanwhocodes/config-array>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>eslint>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>@eslint/eslintrc>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>@humanwhocodes/config-array>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>eslint>@eslint/eslintrc>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>eslint>@humanwhocodes/config-array>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+              ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>eslint>minimatch",
+              ".>@typescript-eslint/eslint-plugin>eslint>@eslint/eslintrc>minimatch",
+              ".>@typescript-eslint/eslint-plugin>eslint>@humanwhocodes/config-array>minimatch",
+              ".>@typescript-eslint/eslint-plugin>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+              ".>@typescript-eslint/eslint-plugin>eslint>minimatch",
+              ".>@typescript-eslint/parser>eslint>@eslint/eslintrc>minimatch",
+              ".>@typescript-eslint/parser>eslint>@humanwhocodes/config-array>minimatch",
+              ".>@typescript-eslint/parser>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+              ".>@typescript-eslint/parser>eslint>minimatch",
+              ".>@vscode/test-cli>c8>test-exclude>glob>minimatch",
+              ".>@vscode/test-cli>c8>test-exclude>minimatch",
+              ".>eslint>@eslint/eslintrc>minimatch",
+              ".>eslint>@humanwhocodes/config-array>minimatch",
+              ".>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+              ".>eslint>minimatch"
+            ],
+            "dev": true,
+            "optional": false,
+            "bundled": false
+          },
+          {
+            "version": "5.1.9",
+            "paths": [
+              ".>@vscode/test-cli>mocha>glob>minimatch",
+              ".>@vscode/test-cli>mocha>minimatch",
+              ".>mocha>glob>minimatch",
+              ".>mocha>minimatch"
+            ],
+            "dev": true,
+            "optional": false,
+            "bundled": false
+          }
+        ]
+      },
+      {
+        "id": "GHSA-3g3m-2fjr-6pw4",
+        "url": "https://github.com/advisories/GHSA-3g3m-2fjr-6pw4",
+        "package": "glob",
+        "severity": "moderate",
+        "title": "Glob: AbortSignal cancellation bypass allows post-timeout filesystem traversal",
+        "patched": ">=14.0.2",
+        "findings": [
+          {
+            "version": "10.5.0",
+            "paths": [
+              ".>@vscode/test-cli>glob"
+            ],
+            "dev": true,
+            "optional": false,
+            "bundled": false
+          }
+        ]
+      }
+    ]
+  },
+  "productionAudit": {
+    "advisories": {},
+    "metadata": {
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0
+      },
+      "dependencies": 0,
+      "devDependencies": 0,
+      "optionalDependencies": 0,
+      "totalDependencies": 0
+    }
+  },
+  "isolatedPackagerAudit": {
+    "metadata": {
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 2,
+        "high": 0,
+        "critical": 0
+      },
+      "dependencies": 261,
+      "devDependencies": 0,
+      "optionalDependencies": 44,
+      "totalDependencies": 305
+    },
+    "advisories": [
+      {
+        "id": "GHSA-g3hv-75wg-m249",
+        "url": "https://github.com/advisories/GHSA-g3hv-75wg-m249",
+        "package": "minimatch",
+        "severity": "moderate",
+        "title": "minimatch has potential denial of service via globparts amplification",
+        "patched": ">=11.0.1",
+        "findings": [
+          {
+            "version": "10.2.6",
+            "paths": [
+              ".>@vscode/vsce>glob>minimatch"
+            ],
+            "dev": false,
+            "optional": false,
+            "bundled": false
+          },
+          {
+            "version": "3.1.5",
+            "paths": [
+              ".>@vscode/vsce>minimatch"
+            ],
+            "dev": false,
+            "optional": false,
+            "bundled": false
+          }
+        ]
+      },
+      {
+        "id": "GHSA-3g3m-2fjr-6pw4",
+        "url": "https://github.com/advisories/GHSA-3g3m-2fjr-6pw4",
+        "package": "glob",
+        "severity": "moderate",
+        "title": "Glob: AbortSignal cancellation bypass allows post-timeout filesystem traversal",
+        "patched": ">=14.0.2",
+        "findings": [
+          {
+            "version": "11.1.0",
+            "paths": [
+              ".>@vscode/vsce>glob"
+            ],
+            "dev": false,
+            "optional": false,
+            "bundled": false
+          }
+        ]
+      }
+    ]
+  },
+  "riskReview": "2026-12-01 or next release approval, whichever earlier; does not cover new findings or proven exploitability",
+  "notChecked": [
+    "real Linux",
+    "real macOS",
+    "Swift compilation",
+    "Apple model availability",
+    "real Apple inference",
+    "installed native integration and POSIX execution rights",
+    "real Remote SSH",
+    "real Dev Containers",
+    "real WSL",
+    "managed enterprise trust stores",
+    "system proxy/PAC/authenticated or HTTPS proxy server"
+  ],
+  "simulated": [
+    "remote execution identity security regression",
+    "command UI/configuration/SCM doubles around genuine network transport"
+  ],
+  "logHashes": {
+    "certificate-generation.log": "95ec1b1841ef4f0120473f9c9bc02bf857ae46729506fa116e936ba61d06004b",
+    "collect-evidence.cjs": "44de618f7dee66cbd826775f4e8204a04575e6637c3e1a99ff0f2b1d49e9a06c",
+    "compile-tests.log": "028ae78c0eb935f0d6be39ddb7a7a63cfc71fab9949cbaf1ddada9b0bb3ee444",
+    "compile.log": "0586cf202f1874e6c621076f7dca8cb6437c584a2ebffa031267d39e143a4826",
+    "final-check.cjs": "6dfcc53dfd661658ef367ec64affee4adb555902b4bf738f3650ed684c1a4b16",
+    "frozen-install.log": "75a305d83f89d3b3e626776d6e792cdc4717a3dfea6dd853b8b255b5eaf72ab3",
+    "git-diff-check.log": "c443a82cfc517a42724950c68a6bc3ab55d380ccc05be5bf4d618630419cb39f",
+    "headless-with-tls.log": "d9c1f48fa392fffcbda188aaf7b7eac3310907bf47ac928ca6061bc266cea54c",
+    "host-current.log": "c7b8ee7d0b8fb72a44b7ead94ea5151761b70e26fa9435e96c4357fe29797c3b",
+    "host-minimum.log": "7a9e3c13071db059c6d817a45f7df7f3ce5c51680e7f07ad1707b6154a03a7cb",
+    "inspect-vsix.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "install-vsix.cjs": "a3509585c3ad52c39d67d28233deb74b87c8cf8fc7aaad59621a39a8526a9999",
+    "install-vsix.log": "5192822acfed476b0306cbc1fb47d932bdd3bf2bdc916700d7543ff04ff6a607",
+    "installed-probe-current.log": "583a30617de9196d98f15be02072f6bc4d124eeed452ef98c792e59acd569738",
+    "installed-probe-minimum.log": "9285a132ff975849c350cbaad111cc6725e01423d06bc59bd855d7995d32a476",
+    "lint.log": "a3f258b463eb621c2a80ba3d897b08d6cdaafdab31a08e19a287d374afed8c46",
+    "new-file-whitespace.log": "974050d4df3f7aa1412f853ca1f6ea3b3f656296617105267b5cac11a6058a49",
+    "node16-proxy.log": "6a673fc7c8a293b986a9f2f27eea7f26ebc7066dcce3c5635fe4658b26f885e9",
+    "node24-proxy.log": "3fa7ecb9dbb81c81e9f7f7927f8bb4e516d8c8731ca5f0076b640ca7a1020a43",
+    "node26-proxy.log": "19bdb65e36df36b6614e87e34fa19ff95f8949f21384961b3dcb9bb0d466ecec",
+    "package-vsix.log": "fef89e11e05d0ce8d8e9fce388f9c0d6e24de5eee2b84300b596d6519ca05a58",
+    "package.log": "d741d402e72279199f4e37d9d7ebe0af026929dd9b3ff5554172ed05e80e4d55",
+    "packaging-tests.log": "60e8508e837558234d3133ca52148ee6bf20ebb4a11f4392973d783af5575bec",
+    "proxy-host-runs.log": "1267ad2ff6ad24a15c417a68d85197b344abdcef24eb494c8ad90f9fe9f875c3",
+    "run-platform-suite.cjs": "ae4a89d578aa8cc1f520117dee6311a06b34279bd67ea34cddb9be040e084ef2",
+    "run-proxy.cjs": "935003a84f73abbd72938ac727c47775354bbaa746b361746285ca99b4f0d2d0",
+    "run-startup-ca.cjs": "0a1f883a24d04975cdee59d789be328024bcaa22ec615d1e1dfd49d03b437f14",
+    "run-startup-proxy.cjs": "f13186c14e954ebd3a12219d242d9a8748d190900e19b5ac53210d6b947ca4a1",
+    "startup-ca-node16.log": "ed764bc87b7c0248637405059e204ea3e74f26364343d5e4ad16b7d2422e3a15",
+    "startup-ca-node24.log": "5d7fab91aee80ac384bf788c661692d81a678de592a9085b6cd57ee4182695f6",
+    "startup-ca-node26.log": "bf2d0c0e6bec4647439c0fc9af513839f300bfcfa1d2aec1ae129481e44aff81",
+    "startup-ca-probe.cjs": "e8af73309763c958250acf4f5033ca1fae4d72cf609ff8d939c28c232cec913a",
+    "startup-proxy-runs.log": "72a4e37c1b37bdea6941da0628844dc02e2f580646bfc9b32f473d46216d479f",
+    "startup-proxy-target.cjs": "3468dd6a33c56701bd40bb09197e789c4f8871e99020fbea322a288bc0cdc4d0",
+    "tls.log": "1895d4104ca2bfc0cb1a2efa442c9e44f3c6b692c96787eb165405b49feab377",
+    "typecheck.log": "5a3973f79ed9becd5f23c4feff467513814de7ea381d75a4d2e339aa8b8edca9"
+  }
+}

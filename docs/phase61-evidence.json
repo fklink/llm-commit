@@ -1,0 +1,149 @@
+{
+  "date": "2026-11-01",
+  "bug": "BUG-004",
+  "status": "fixed for validated Windows hosts",
+  "minimum": "^1.80.0 unchanged",
+  "before": {
+    "node": "16.17.1",
+    "fetch": "undefined",
+    "commandRegression": "failed: input remained empty"
+  },
+  "after": {
+    "minimum": {
+      "vscode": "1.80.0",
+      "node": "16.17.1",
+      "platform": "win32",
+      "arch": "x64",
+      "remoteName": null,
+      "fetch": "undefined",
+      "AbortController": "function",
+      "AbortSignal": "function",
+      "extensionKind": 1,
+      "activation": true,
+      "gitApi": true,
+      "workspaceFolders": 1,
+      "secretStorage": true,
+      "nativeHttp": true,
+      "installedBundleHttpGeneration": true,
+      "status": "passed",
+      "installedFromVsix": true
+    },
+    "current": {
+      "vscode": "1.144.0",
+      "node": "24.22.1",
+      "platform": "win32",
+      "arch": "x64",
+      "remoteName": null,
+      "fetch": "function",
+      "AbortController": "function",
+      "AbortSignal": "function",
+      "extensionKind": 1,
+      "activation": true,
+      "gitApi": true,
+      "workspaceFolders": 1,
+      "secretStorage": true,
+      "nativeHttp": true,
+      "installedBundleHttpGeneration": true,
+      "status": "passed",
+      "installedFromVsix": true
+    }
+  },
+  "testCounts": {
+    "existingHeadless": 194,
+    "newTransport": 23,
+    "headlessPassed": 217,
+    "headlessHostOnlySkipped": 7,
+    "hostPassedPerVersion": 226,
+    "packagingTests": 10,
+    "tlsProbes": 9
+  },
+  "tls": {
+    "verifiedByDefault": true,
+    "testCA": "explicit only inside TLS fixture module adapter, never production or OS trust",
+    "untrustedCertificate": "rejected in both host suites",
+    "hostnameMismatch": "rejected in Node 16/24/26",
+    "delayedBodyAbort": "passed in Node 16/24/26",
+    "defaultNode16Trust": "anonymous registry HEAD verified, status 200"
+  },
+  "projectAudit": {
+    "info": 0,
+    "low": 2,
+    "moderate": 2,
+    "high": 0,
+    "critical": 0
+  },
+  "productionAudit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0
+  },
+  "lockSHA256": "33e277a06c5c4fb0371bd00a91ae00264398b3862c86d5d409f2914abe07e447",
+  "scope": {
+    "dependencies": "unchanged",
+    "manifest": "unchanged",
+    "git": "unchanged",
+    "apple": "unchanged",
+    "securityLogic": "unchanged except transport types",
+    "existingTestAssertions": "unchanged; fixture transport/JSON adapters and optional Node18 cleanup only"
+  },
+  "testVsix": {
+    "productionBundleSHA256": "fe73f2484264c3e58c8c1e4e0b89ff2cbdc8a7a0a39d8e5858571050da1df901",
+    "kind": "non-release test VSIX",
+    "bytes": 57065,
+    "uncompressedBytes": 100361,
+    "sha256": "981d3794c74a164ed64bd8e6405bcc1eaaaafe86c0c0c55aea8ebb9e41be9586",
+    "entries": [
+      {
+        "path": "extension.vsixmanifest",
+        "bytes": 2857,
+        "mode": "100664"
+      },
+      {
+        "path": "[Content_Types].xml",
+        "bytes": 462,
+        "mode": "100664"
+      },
+      {
+        "path": "extension/readme.md",
+        "bytes": 25621,
+        "mode": "100664"
+      },
+      {
+        "path": "extension/PHASE6-TEST-PACKAGE.txt",
+        "bytes": 121,
+        "mode": "100666"
+      },
+      {
+        "path": "extension/package.json",
+        "bytes": 7167,
+        "mode": "100644"
+      },
+      {
+        "path": "extension/LICENSE.txt",
+        "bytes": 1083,
+        "mode": "100666"
+      },
+      {
+        "path": "extension/changelog.md",
+        "bytes": 5681,
+        "mode": "100664"
+      },
+      {
+        "path": "extension/images/icon.png",
+        "bytes": 32001,
+        "mode": "100666"
+      },
+      {
+        "path": "extension/dist/extension.js",
+        "bytes": 25368,
+        "mode": "100666"
+      }
+    ],
+    "appleBinary": false,
+    "developerArtifacts": false,
+    "credentialPatternScan": "no matches; not a proof that arbitrary secrets cannot exist",
+    "vscodeMinimum": "^1.80.0"
+  }
+}

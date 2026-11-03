@@ -1,0 +1,152 @@
+{
+  "date": "2026-11-01",
+  "score": 4,
+  "releaseApproved": false,
+  "minimumUnchanged": "^1.80.0",
+  "projectManifestSHA256": "7ee2644dfdaad2cf658aa5f5e0251590d73633c863aa027ed87660c64c53d323",
+  "projectLockSHA256": "33e277a06c5c4fb0371bd00a91ae00264398b3862c86d5d409f2914abe07e447",
+  "sourceTestsUnchanged": true,
+  "packager": {
+    "version": "3.6.2",
+    "isolated": true,
+    "integrity": "sha512-gvBfarWF+Ii20ESqjA3dpnPJpQJ8fFJYtcWtjwbRADommCzGg1emtmb34E+DKKhECYvaVyAl+TF9lWS/3GSPvg==",
+    "audit": {
+      "info": 0,
+      "low": 0,
+      "moderate": 2,
+      "high": 0,
+      "critical": 0
+    },
+    "zipReader": {
+      "node26": "failed: legacy yauzl stalls; guarded",
+      "node24": "passed"
+    }
+  },
+  "testPackage": {
+    "productionBundleSHA256": "d5852074c70207012a6f5f141e95851bd647fb691dff56dfef904de897938339",
+    "kind": "non-release test VSIX",
+    "bytes": 56207,
+    "uncompressedBytes": 97801,
+    "sha256": "316470d9308f2e5fb74ef72d3441450e821be173c526fb94bf5004a34db0c643",
+    "entries": [
+      {
+        "path": "extension.vsixmanifest",
+        "bytes": 2857,
+        "mode": "100664"
+      },
+      {
+        "path": "[Content_Types].xml",
+        "bytes": 462,
+        "mode": "100664"
+      },
+      {
+        "path": "extension/readme.md",
+        "bytes": 25381,
+        "mode": "100664"
+      },
+      {
+        "path": "extension/PHASE6-TEST-PACKAGE.txt",
+        "bytes": 121,
+        "mode": "100666"
+      },
+      {
+        "path": "extension/package.json",
+        "bytes": 7167,
+        "mode": "100644"
+      },
+      {
+        "path": "extension/LICENSE.txt",
+        "bytes": 1083,
+        "mode": "100666"
+      },
+      {
+        "path": "extension/changelog.md",
+        "bytes": 5342,
+        "mode": "100664"
+      },
+      {
+        "path": "extension/images/icon.png",
+        "bytes": 32001,
+        "mode": "100666"
+      },
+      {
+        "path": "extension/dist/extension.js",
+        "bytes": 23387,
+        "mode": "100666"
+      }
+    ],
+    "appleBinary": false,
+    "developerArtifacts": false,
+    "credentialPatternScan": "no matches; not a proof that arbitrary secrets cannot exist",
+    "vscodeMinimum": "^1.80.0"
+  },
+  "compatibility": {
+    "minimum": {
+      "vscode": "1.80.0",
+      "node": "16.17.1",
+      "platform": "win32",
+      "arch": "x64",
+      "remoteName": null,
+      "fetch": "undefined",
+      "AbortController": "function",
+      "AbortSignal": "function",
+      "extensionKind": 1,
+      "activation": true,
+      "gitApi": true,
+      "workspaceFolders": 1,
+      "secretStorage": true,
+      "status": "failed",
+      "failure": "ERR_ASSERTION",
+      "installedFromIsolatedVsixDirectory": true,
+      "repositoryRootCount": 1
+    },
+    "current": {
+      "vscode": "1.144.0",
+      "node": "24.22.1",
+      "platform": "win32",
+      "arch": "x64",
+      "remoteName": null,
+      "fetch": "function",
+      "AbortController": "function",
+      "AbortSignal": "function",
+      "extensionKind": 1,
+      "activation": true,
+      "gitApi": true,
+      "workspaceFolders": 2,
+      "secretStorage": true,
+      "nativeHttp": true,
+      "status": "passed",
+      "installedFromIsolatedVsixDirectory": true,
+      "repositoryRootCount": 2
+    },
+    "minimumVSCodeTypes": "1.80.0: passed isolated typecheck; not runtime proof"
+  },
+  "regressions": {
+    "headlessPassed": 194,
+    "headlessHostOnlySkipped": 7,
+    "installedVsixHostPassed": 203,
+    "packagingPassed": 10
+  },
+  "projectAudit": {
+    "info": 0,
+    "low": 2,
+    "moderate": 2,
+    "high": 0,
+    "critical": 0
+  },
+  "productionAudit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0
+  },
+  "macOS": "not executable: no suitable Mac, Swift or binary",
+  "remote": {
+    "ssh": "not executed: no authorized test target available",
+    "containers": "not executable: no container engine available",
+    "wsl": "not executable: WSL not installed",
+    "contextTests": "simulated in existing security suite"
+  },
+  "originalGitStatus": " D .npmrc\n M .vscodeignore\n M CHANGELOG.md\n M README.md\n M eslint.config.mjs\n M package.json\n M pnpm-lock.yaml\n M src/extension.ts\n?? .node-version\n?? docs/\n?? pnpm-workspace.yaml\n?? scripts/\n?? src/security.ts\n?? src/test/generation.test.ts\n?? src/test/git.integration.test.ts\n?? src/test/lifecycle.test.ts\n?? src/test/provider.test.ts\n?? src/test/security.test.ts\n"
+}

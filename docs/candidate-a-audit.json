@@ -1,0 +1,179 @@
+{
+  "advisories": {
+    "1113041": {
+      "findings": [
+        {
+          "version": "5.100.2",
+          "paths": [
+            ".>ts-loader>webpack",
+            ".>webpack",
+            ".>webpack-cli>@webpack-cli/configtest>webpack",
+            ".>webpack-cli>@webpack-cli/info>webpack",
+            ".>webpack-cli>@webpack-cli/serve>webpack",
+            ".>webpack-cli>webpack"
+          ],
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1113041,
+      "title": "webpack buildHttp: allowedUris allow-list bypass via URL userinfo (@) leading to build-time SSRF behavior",
+      "module_name": "webpack",
+      "vulnerable_versions": ">=5.49.0 <=5.104.0",
+      "patched_versions": ">=5.104.1",
+      "severity": "low",
+      "cwe": "CWE-918",
+      "github_advisory_id": "GHSA-8fgc-7cc6-rx7x",
+      "url": "https://github.com/advisories/GHSA-8fgc-7cc6-rx7x"
+    },
+    "1113042": {
+      "findings": [
+        {
+          "version": "5.100.2",
+          "paths": [
+            ".>ts-loader>webpack",
+            ".>webpack",
+            ".>webpack-cli>@webpack-cli/configtest>webpack",
+            ".>webpack-cli>@webpack-cli/info>webpack",
+            ".>webpack-cli>@webpack-cli/serve>webpack",
+            ".>webpack-cli>webpack"
+          ],
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1113042,
+      "title": "webpack buildHttp HttpUriPlugin allowedUris bypass via HTTP redirects → SSRF + cache persistence",
+      "module_name": "webpack",
+      "vulnerable_versions": ">=5.49.0 <5.104.0",
+      "patched_versions": ">=5.104.0",
+      "severity": "low",
+      "cwe": "CWE-918",
+      "github_advisory_id": "GHSA-38r7-794h-5758",
+      "url": "https://github.com/advisories/GHSA-38r7-794h-5758"
+    },
+    "1244012": {
+      "findings": [
+        {
+          "version": "9.0.9",
+          "paths": [
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/parser>@typescript-eslint/typescript-estree>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/typescript-estree>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>@typescript-eslint/typescript-estree>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>@typescript-eslint/typescript-estree>minimatch",
+            ".>@typescript-eslint/parser>@typescript-eslint/typescript-estree>minimatch",
+            ".>@vscode/test-cli>glob>minimatch",
+            ".>@vscode/test-cli>minimatch"
+          ],
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "version": "3.1.5",
+          "paths": [
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/parser>eslint>@eslint/eslintrc>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/parser>eslint>@humanwhocodes/config-array>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/parser>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/parser>eslint>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>@eslint/eslintrc>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>@humanwhocodes/config-array>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>eslint>@eslint/eslintrc>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>eslint>@humanwhocodes/config-array>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>@typescript-eslint/utils>eslint>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>eslint>@eslint/eslintrc>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>eslint>@humanwhocodes/config-array>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/type-utils>eslint>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>@eslint/eslintrc>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>@humanwhocodes/config-array>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>@eslint-community/eslint-utils>eslint>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>eslint>@eslint/eslintrc>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>eslint>@humanwhocodes/config-array>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+            ".>@typescript-eslint/eslint-plugin>@typescript-eslint/utils>eslint>minimatch",
+            ".>@typescript-eslint/eslint-plugin>eslint>@eslint/eslintrc>minimatch",
+            ".>@typescript-eslint/eslint-plugin>eslint>@humanwhocodes/config-array>minimatch",
+            ".>@typescript-eslint/eslint-plugin>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+            ".>@typescript-eslint/eslint-plugin>eslint>minimatch",
+            ".>@typescript-eslint/parser>eslint>@eslint/eslintrc>minimatch",
+            ".>@typescript-eslint/parser>eslint>@humanwhocodes/config-array>minimatch",
+            ".>@typescript-eslint/parser>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+            ".>@typescript-eslint/parser>eslint>minimatch",
+            ".>@vscode/test-cli>c8>test-exclude>glob>minimatch",
+            ".>@vscode/test-cli>c8>test-exclude>minimatch",
+            ".>eslint>@eslint/eslintrc>minimatch",
+            ".>eslint>@humanwhocodes/config-array>minimatch",
+            ".>eslint>file-entry-cache>flat-cache>rimraf>glob>minimatch",
+            ".>eslint>minimatch"
+          ],
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        },
+        {
+          "version": "5.1.9",
+          "paths": [
+            ".>@vscode/test-cli>mocha>glob>minimatch",
+            ".>@vscode/test-cli>mocha>minimatch",
+            ".>mocha>glob>minimatch",
+            ".>mocha>minimatch"
+          ],
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1244012,
+      "title": "minimatch has potential denial of service via globparts amplification",
+      "module_name": "minimatch",
+      "vulnerable_versions": "<11.0.1",
+      "patched_versions": ">=11.0.1",
+      "severity": "moderate",
+      "cwe": "CWE-405",
+      "github_advisory_id": "GHSA-g3hv-75wg-m249",
+      "url": "https://github.com/advisories/GHSA-g3hv-75wg-m249"
+    },
+    "1244013": {
+      "findings": [
+        {
+          "version": "10.5.0",
+          "paths": [
+            ".>@vscode/test-cli>glob"
+          ],
+          "dev": true,
+          "optional": false,
+          "bundled": false
+        }
+      ],
+      "id": 1244013,
+      "title": "Glob: AbortSignal cancellation bypass allows post-timeout filesystem traversal",
+      "module_name": "glob",
+      "vulnerable_versions": ">=9.0.0 <=14.0.1",
+      "patched_versions": ">=14.0.2",
+      "severity": "moderate",
+      "cwe": "CWE-400",
+      "github_advisory_id": "GHSA-3g3m-2fjr-6pw4",
+      "url": "https://github.com/advisories/GHSA-3g3m-2fjr-6pw4"
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 2,
+      "moderate": 2,
+      "high": 0,
+      "critical": 0
+    },
+    "dependencies": 0,
+    "devDependencies": 330,
+    "optionalDependencies": 2,
+    "totalDependencies": 330
+  }
+}

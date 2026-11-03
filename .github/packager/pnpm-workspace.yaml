@@ -1,0 +1,3 @@
+overrides:
+  "@vscode/vsce@3.9.2>glob": "14.0.3"
+  "@vscode/vsce@3.9.2>minimatch": "11.0.4"

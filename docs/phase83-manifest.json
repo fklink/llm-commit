@@ -1,0 +1,1444 @@
+{
+  "date": "2026-11-03",
+  "scope": "Phase 8.3 preparation only; no Git or GitHub writes authorized or executed",
+  "approvalStatus": "pending separate user approval",
+  "base": {
+    "branch": "main",
+    "HEAD": "0a2c0860dea969e3a42f24802c3418c3ea545aab",
+    "summary": "0a2c086 feat: add Apple Foundation Models as a provider",
+    "remoteTrackingRefsNotLive": [
+      "refs/heads/main 0a2c0860dea969e3a42f24802c3418c3ea545aab",
+      "refs/remotes/origin/HEAD 0a2c0860dea969e3a42f24802c3418c3ea545aab",
+      "refs/remotes/origin/main 0a2c0860dea969e3a42f24802c3418c3ea545aab"
+    ]
+  },
+  "target": {
+    "proposedBranch": "codex/ci-first-platform-run",
+    "branchFormat": {
+      "status": 0,
+      "text": "codex/ci-first-platform-run"
+    },
+    "localBranchExists": false,
+    "effectivePushURLs": [
+      {
+        "url": "https://github.com/evertjr/llm-commit.git",
+        "embeddedCredentials": false,
+        "queryPresent": false
+      }
+    ],
+    "remoteMirror": {
+      "status": 1,
+      "text": ""
+    },
+    "pushFollowTags": {
+      "status": 1,
+      "text": ""
+    },
+    "hooks": {
+      "customPath": false,
+      "nonSampleHooks": []
+    },
+    "operations": {
+      "mergeHead": false,
+      "rebaseMerge": false,
+      "rebaseApply": false,
+      "cherryPickHead": false
+    },
+    "shallow": "false",
+    "liveRemoteQueried": false
+  },
+  "commit": {
+    "count": 1,
+    "title": "ci: consolidate validated HTTP extension and add cross-platform checks",
+    "pushRefspec": "HEAD:refs/heads/codex/ci-first-platform-run",
+    "pushRemote": "origin",
+    "pushTriggersFirstActionsRun": true,
+    "mainPush": false,
+    "tags": false,
+    "PR": false,
+    "merge": false,
+    "release": false,
+    "personalPathMetadataIncluded": false
+  },
+  "counts": {
+    "initialExistingFiles": 83,
+    "initialModified": 8,
+    "initialDeleted": 3,
+    "initialUntracked": 64,
+    "plannedCommitPaths": 77,
+    "modified": 8,
+    "added": 66,
+    "deleted": 3,
+    "resultingExistingFiles": 85,
+    "retainedUnchangedHEADFiles": 11
+  },
+  "commitChanges": [
+    {
+      "path": ".github/ci-config.json",
+      "action": "A",
+      "category": "CI-Workflow und Orchestrierung",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 558,
+      "sha256": "5d7e131c84a95c17c9a40994f6811f96c53455d5c52e3e2927e890a42dbf84fb"
+    },
+    {
+      "path": ".github/packager/package.json",
+      "action": "A",
+      "category": "Dependency-, Lock- und Toolchain-Dateien",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 106,
+      "sha256": "32fdc3ef9fde609b168c81db8d572f2c93eedf99139b4c936543bb5d240e348f"
+    },
+    {
+      "path": ".github/packager/pnpm-lock.yaml",
+      "action": "A",
+      "category": "Dependency-, Lock- und Toolchain-Dateien",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 74658,
+      "sha256": "955568ce171e914d1a822bccf7f5ee1892419ee1bc3907af1fcdb027a0de7bb0"
+    },
+    {
+      "path": ".github/packager/pnpm-workspace.yaml",
+      "action": "A",
+      "category": "Dependency-, Lock- und Toolchain-Dateien",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 92,
+      "sha256": "4a6b62290f58f023cde060365aaca027ecf4640782f3578637febb5312355380"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "action": "A",
+      "category": "CI-Workflow und Orchestrierung",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 6674,
+      "sha256": "19ed1b015a3d1a6c9b8dc3c767b63254f83c066cee16dc46b646ea280e39109d"
+    },
+    {
+      "path": ".gitignore",
+      "action": "M",
+      "category": "Build-, Packaging- und Projektkonfiguration",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 48,
+      "sha256": "fab6d91be7298087fb65dfb2808ef0e03a5e91cac23a3f143fec42cbbefc32a1"
+    },
+    {
+      "path": ".node-version",
+      "action": "A",
+      "category": "Dependency-, Lock- und Toolchain-Dateien",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 8,
+      "sha256": "6e775beae185bb3f5837d2f6d3fbe910e6f60e18fa507e661e312e84d707a92f"
+    },
+    {
+      "path": ".npmrc",
+      "action": "D",
+      "category": "Dependency-, Lock- und Toolchain-Dateien",
+      "purpose": "product, build or test prerequisite",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "path": ".vscodeignore",
+      "action": "M",
+      "category": "Build-, Packaging- und Projektkonfiguration",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 335,
+      "sha256": "92934ff2df801721b8c875352316880bf80207711b48e8906a0cc28068233268"
+    },
+    {
+      "path": "AGENTS.md",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 11851,
+      "sha256": "21b1f055687edb4db6379cb991f1fe6ce6e1021ac72f589be6a08b3756503dba"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "action": "M",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "packaged runtime resource",
+      "bytes": 6378,
+      "sha256": "fae4082cdc66859151cb529413b25226a4c22bad41b56b047367ab03ff6ce589"
+    },
+    {
+      "path": "docs/candidate-a-audit.json",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 8836,
+      "sha256": "9462a20c4f76a48be72b36dfa80ad1ed38bbc30a2f1cd0e639a642771a1b0751"
+    },
+    {
+      "path": "docs/candidate-a-graph.json",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 210974,
+      "sha256": "320c48b3435fbc2fccdc6cc202e84d304d3e12243ec1ed676d211774579e7edb"
+    },
+    {
+      "path": "docs/candidate-a-upgrade.md",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 11301,
+      "sha256": "a6dfe07a82f5bee4622c73ef24bb79a9252dc6da7e2b28a9dbe8ac6284714488"
+    },
+    {
+      "path": "docs/DECISIONS.md",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 22408,
+      "sha256": "231d9287ad91d8f1a7fd14e11b34e5e5d50bea64e7c0708408f1b8aca22e7e68"
+    },
+    {
+      "path": "docs/ISSUES.md",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 23870,
+      "sha256": "370c694e05ed2a0353c31ec1ad4e24085c3642de068e3a249d80482a518867f9"
+    },
+    {
+      "path": "docs/phase5-audit-after.json",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 12668,
+      "sha256": "40a38b3a82da81aa8cb5265ff198e4244fd0873aa293cf3652435e2f7910289e"
+    },
+    {
+      "path": "docs/phase5-audit-before.json",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 157510,
+      "sha256": "866d0f9f7bd72cbddc7b878ba43dd77be0c3a1185bf669332ce9f93219cec23e"
+    },
+    {
+      "path": "docs/phase5-toolchain.md",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 22104,
+      "sha256": "c44ce6b6f4f07833ffb4196c675c428de85c60120705ade78640028a5a415378"
+    },
+    {
+      "path": "docs/phase6-audit.json",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 8836,
+      "sha256": "9462a20c4f76a48be72b36dfa80ad1ed38bbc30a2f1cd0e639a642771a1b0751"
+    },
+    {
+      "path": "docs/phase6-evidence.json",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 4428,
+      "sha256": "90326522c055e9307bdb8adf593cb8704ca0cc6d23c504afc08b39e55bc2c4ec"
+    },
+    {
+      "path": "docs/phase6-packager-audit.json",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 1794,
+      "sha256": "61cbd63af5f226e67b074dec86d89b3c6cbd962e750d54a723dcfaf14ffe1224"
+    },
+    {
+      "path": "docs/phase6-readiness.md",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 17743,
+      "sha256": "847bef5a4f74890a0e5613badaf3588bd663e9af4c72f79359e6dd8904a99dbc"
+    },
+    {
+      "path": "docs/phase61-evidence.json",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 3947,
+      "sha256": "80025837f1ae6de34b6dd6016716f5069a5864f978ebff48e17dcf6da20c271a"
+    },
+    {
+      "path": "docs/phase61-http-compatibility.md",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 14529,
+      "sha256": "62658434829a337863f7bfd357ee78c71e112e1eab144c419402a300ce89fdc9"
+    },
+    {
+      "path": "docs/phase62-evidence.json",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 28193,
+      "sha256": "de65cfc32d5297bc619751331fc0137776cde19e912402db80f4b4296058ce1a"
+    },
+    {
+      "path": "docs/phase62-platform-runbook.md",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 13399,
+      "sha256": "38be7053dec1480adfe17d604ac82235c24b01498d6f701b8ece5a5153a783e5"
+    },
+    {
+      "path": "docs/phase62-readiness.md",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 15025,
+      "sha256": "e64b38fd554d5b9a96f30d78990092dc62cdb1993a21793a782ff22e3eb0f848"
+    },
+    {
+      "path": "docs/phase63-evidence.json",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 27513,
+      "sha256": "1940aab43f7f8148eee05eaaf87498469a7e56c8195f56417d4f7f9f6453d2da"
+    },
+    {
+      "path": "docs/phase63-platform-acceptance.md",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 17180,
+      "sha256": "7c1a916a78202b83cb9300ccc0b0a4ed94380e1bca8f0767c2154f08834800d8"
+    },
+    {
+      "path": "docs/phase7-evidence.json",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "required CI audit baseline",
+      "bytes": 27059,
+      "sha256": "af66914fa691ce667ff6ddb562206058659db13dc31b58692e7faed0e38704d1"
+    },
+    {
+      "path": "docs/phase7-removal.md",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 15668,
+      "sha256": "0c277171276b4235569964f7f721ad193f8adb0c801e925985d14d856902c202"
+    },
+    {
+      "path": "docs/phase8-ci.md",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 18055,
+      "sha256": "76638bf8339eb4cf9ad1cefcff518371d1842c0cf14592b8ac86245ad22e5a9e"
+    },
+    {
+      "path": "docs/phase8-evidence.json",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 36331,
+      "sha256": "a8f6c50c8f1eccdae9b9c1fce9ef583855ba960b7d6c69090ef20d713a3ebf4e"
+    },
+    {
+      "path": "docs/phase81-evidence.json",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 73017,
+      "sha256": "6d82634089efb9f1a60f87df420d5987e75e0abcf0e0c9bad2ffaaa325b12822"
+    },
+    {
+      "path": "docs/phase81-preparation.md",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 17982,
+      "sha256": "509e74bd407a389d5abf078b83a28395533cfbb329c7def3c12c8d648aae284d"
+    },
+    {
+      "path": "docs/phase82-evidence.json",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 84126,
+      "sha256": "1da4c15811773338ddadffab06bacdb1747c1724f3ec37d4c466b03f2405527d"
+    },
+    {
+      "path": "docs/phase82-packager.md",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 13315,
+      "sha256": "9f1b97ebc69e7c753377486c3664af0d7dd98651ce1b1c12ce3368e5cd8a31a0"
+    },
+    {
+      "path": "docs/phase83-deployment.md",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 23501,
+      "sha256": "a43447bf452ce8fec79e9792a94d8c1165e22e716c2e442e027f87d4647f3ce8"
+    },
+    {
+      "path": "docs/phase83-manifest.json",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 53897,
+      "sha256": null
+    },
+    {
+      "path": "docs/PROJECT_STATUS.md",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 13266,
+      "sha256": "6723dda88173b4d277c70b167c4d912354a511c0b779e09e27edda5a9304ae9b"
+    },
+    {
+      "path": "docs/release-plan.md",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 9204,
+      "sha256": "3236f6b012a941077c19ad644917d325fe72cbe21ae0cc8aa5332ced45ea1dfd"
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "action": "A",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "bytes": 7440,
+      "sha256": "da144588cd9df4c819e778726ece430c5ee46679f85e65ce9d51227090eae6ae"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "action": "M",
+      "category": "Build-, Packaging- und Projektkonfiguration",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 653,
+      "sha256": "2192d0e761facc98f31291105b9e3f76a5ab3f11b4a69a5ab72de3af0186f9fc"
+    },
+    {
+      "path": "package.json",
+      "action": "M",
+      "category": "Dependency-, Lock- und Toolchain-Dateien",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 6702,
+      "sha256": "03385288adcf92e1726c157c4459bcf4e31c172ccc2a5c15d835d049f1f03ac7"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "action": "M",
+      "category": "Dependency-, Lock- und Toolchain-Dateien",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 91354,
+      "sha256": "33e277a06c5c4fb0371bd00a91ae00264398b3862c86d5d409f2914abe07e447"
+    },
+    {
+      "path": "pnpm-workspace.yaml",
+      "action": "A",
+      "category": "Dependency-, Lock- und Toolchain-Dateien",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 405,
+      "sha256": "45f850c7e81e0da9bdcde55cb683764e3925885060bcf475b78118f8d6c8ab51"
+    },
+    {
+      "path": "README.md",
+      "action": "M",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "packaged runtime resource",
+      "bytes": 24159,
+      "sha256": "ae23242618c6e5c08b0d542c1f8e4bc69c188c1fbd111289aa6b32877c87bd9b"
+    },
+    {
+      "path": "scripts/ci/bootstrap.cjs",
+      "action": "A",
+      "category": "CI-Workflow und Orchestrierung",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 2659,
+      "sha256": "fb858436c0980610c18f50294be04bded9ea8910d88cd3be1751b04aa44794ec"
+    },
+    {
+      "path": "scripts/ci/ci.test.cjs",
+      "action": "A",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 6411,
+      "sha256": "f6947a73a5d388a7137f0fd50c39ee42707770fe4110359e3b64d5ed7b1c8556"
+    },
+    {
+      "path": "scripts/ci/host.cjs",
+      "action": "A",
+      "category": "CI-Workflow und Orchestrierung",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 5489,
+      "sha256": "2c099239b1e58c4d206130272d0f42598b0294d2d2d51a64a40c138267b79a50"
+    },
+    {
+      "path": "scripts/ci/installed-entry.cjs",
+      "action": "A",
+      "category": "CI-Workflow und Orchestrierung",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 1587,
+      "sha256": "11d6ea249d141d094c6fe19cd353575364b26ea949c951b37f1aa5015e508276"
+    },
+    {
+      "path": "scripts/ci/lib.cjs",
+      "action": "A",
+      "category": "CI-Workflow und Orchestrierung",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 5047,
+      "sha256": "12b55269c912afe1161d44d884222b072f6d6a3e9f8f13f269a00c505609efa0"
+    },
+    {
+      "path": "scripts/ci/run-hosts.cjs",
+      "action": "A",
+      "category": "CI-Workflow und Orchestrierung",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 344,
+      "sha256": "488a12e225f9df36e8c33c7a56e3cd6ecf88d5c301947a3b8e3dbe5b2a88cec3"
+    },
+    {
+      "path": "scripts/ci/tasks.cjs",
+      "action": "A",
+      "category": "CI-Workflow und Orchestrierung",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 9195,
+      "sha256": "8ac3b93b4c5812073507dff887160eefbc72627d83fe0bbdac23690e25107e95"
+    },
+    {
+      "path": "scripts/compatibility-probe.cjs",
+      "action": "A",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 7380,
+      "sha256": "65f2be8407eef32deb84bcfb924f7bcb136da1925e0387f4833704a13c07c396"
+    },
+    {
+      "path": "scripts/http-node16-regression.cjs",
+      "action": "A",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 3013,
+      "sha256": "07d7d011ae9fca9e69fb1b731b163d78ddd1a4feaaeca381642cbd9b429d3ec6"
+    },
+    {
+      "path": "scripts/inspect-test-vsix.cjs",
+      "action": "A",
+      "category": "Build-, Packaging- und Projektkonfiguration",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 4740,
+      "sha256": "7825737fb83d457f75ffaefd69ff74b0a790e7acd97311549f4e497b226ef3b1"
+    },
+    {
+      "path": "scripts/installed-platform-suite.cjs",
+      "action": "A",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 1685,
+      "sha256": "39fb0833dbbd653f246301810090b381668a6847985699b6981424d1bc91e142"
+    },
+    {
+      "path": "scripts/package-test-vsix.cjs",
+      "action": "A",
+      "category": "Build-, Packaging- und Projektkonfiguration",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 1946,
+      "sha256": "25a915717dc3e9d6579885cbc81f1932159fb52ef8d6831b95498c89371c8e40"
+    },
+    {
+      "path": "scripts/package-validation.cjs",
+      "action": "A",
+      "category": "Build-, Packaging- und Projektkonfiguration",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 1666,
+      "sha256": "9cf98c2e0c6ea5ac3458ea21c3887f6171e4944e17b6bccab7f77c27a0b89610"
+    },
+    {
+      "path": "scripts/package-validation.test.cjs",
+      "action": "A",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 2523,
+      "sha256": "f325587119a211021b367bcdfbb62e0bfe7163f2c5c2c3f371274bcc1a6fac11"
+    },
+    {
+      "path": "scripts/proxy-compatibility-probe.cjs",
+      "action": "A",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "retained additional validation probe",
+      "bytes": 6750,
+      "sha256": "b7f5015cd0861b5e7d3775695777ebf86341896347644dc42a64588d4b69cf5b"
+    },
+    {
+      "path": "scripts/test-headless.cjs",
+      "action": "A",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 718,
+      "sha256": "651b5f53ea2bbf487d3cb621ec77f45e729ed3f150c7bea6e3641f77b7164e20"
+    },
+    {
+      "path": "scripts/tls-transport-probe.cjs",
+      "action": "A",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 2519,
+      "sha256": "050cb6ae093a12061b7d30e0492a8565159e63280418b7795afa17a26c6d2de8"
+    },
+    {
+      "path": "src/extension.ts",
+      "action": "M",
+      "category": "Produktiver Extension-Code und genehmigte native Löschungen",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 27084,
+      "sha256": "3604f1b90b374cd457ef943ac21119a4b4d983aa947c786da110ebc123d0df2a"
+    },
+    {
+      "path": "src/security.ts",
+      "action": "A",
+      "category": "Produktiver Extension-Code und genehmigte native Löschungen",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 11406,
+      "sha256": "490d412fd5739e2e5e861e519c49c517d5de36b7618befb58728110025716b9d"
+    },
+    {
+      "path": "src/test/generation.test.ts",
+      "action": "A",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 17662,
+      "sha256": "240da44ddc0426df3d123e078ff414ea72d01164c13bbf4442e765520db159f6"
+    },
+    {
+      "path": "src/test/git.integration.test.ts",
+      "action": "A",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 8546,
+      "sha256": "22f9351a0144fa4b7b7ca6a7120b8dd203d710a2e5a5f307d82c8e7c59c80426"
+    },
+    {
+      "path": "src/test/lifecycle.test.ts",
+      "action": "A",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 18708,
+      "sha256": "079d0c76d282e4b0170408c14b99edeb7cc9fd1188a5c5bd4f0a6bb7cd7686f1"
+    },
+    {
+      "path": "src/test/provider.test.ts",
+      "action": "A",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 17766,
+      "sha256": "0a1e0697969ea0914b2b7eb968be84f5713c2344c62e20120a4091555b0155fe"
+    },
+    {
+      "path": "src/test/security.test.ts",
+      "action": "A",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 22386,
+      "sha256": "323c398c3082d8e1a31583c7dc7d8af8bdfbc45868427a72c62d612b77849962"
+    },
+    {
+      "path": "src/test/transport-fixture.ts",
+      "action": "A",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 815,
+      "sha256": "b3a0bcdc4b20e060bdb82254c9110eba81b481e1ef294848faa444607ebfbb11"
+    },
+    {
+      "path": "src/test/transport.test.ts",
+      "action": "A",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 10673,
+      "sha256": "b116f51e843d3bf07e5005e818b5a5759967b6efbdb4ada9feb024f61702b36d"
+    },
+    {
+      "path": "src/transport.ts",
+      "action": "A",
+      "category": "Produktiver Extension-Code und genehmigte native Löschungen",
+      "purpose": "product, build or test prerequisite",
+      "bytes": 4438,
+      "sha256": "2ba6c9e302c454f6717b0e193087ac25c27ceaae9c548c4b728f514078d353a1"
+    },
+    {
+      "path": "swift/fm-cli/Package.swift",
+      "action": "D",
+      "category": "Produktiver Extension-Code und genehmigte native Löschungen",
+      "purpose": "product, build or test prerequisite",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "path": "swift/fm-cli/Sources/main.swift",
+      "action": "D",
+      "category": "Produktiver Extension-Code und genehmigte native Löschungen",
+      "purpose": "product, build or test prerequisite",
+      "bytes": null,
+      "sha256": null
+    }
+  ],
+  "resultingTree": [
+    {
+      "path": ".github/ci-config.json",
+      "category": "CI-Workflow und Orchestrierung",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "5d7e131c84a95c17c9a40994f6811f96c53455d5c52e3e2927e890a42dbf84fb"
+    },
+    {
+      "path": ".github/packager/package.json",
+      "category": "Dependency-, Lock- und Toolchain-Dateien",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "32fdc3ef9fde609b168c81db8d572f2c93eedf99139b4c936543bb5d240e348f"
+    },
+    {
+      "path": ".github/packager/pnpm-lock.yaml",
+      "category": "Dependency-, Lock- und Toolchain-Dateien",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "955568ce171e914d1a822bccf7f5ee1892419ee1bc3907af1fcdb027a0de7bb0"
+    },
+    {
+      "path": ".github/packager/pnpm-workspace.yaml",
+      "category": "Dependency-, Lock- und Toolchain-Dateien",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "4a6b62290f58f023cde060365aaca027ecf4640782f3578637febb5312355380"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "category": "CI-Workflow und Orchestrierung",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "19ed1b015a3d1a6c9b8dc3c767b63254f83c066cee16dc46b646ea280e39109d"
+    },
+    {
+      "path": ".gitignore",
+      "category": "Build-, Packaging- und Projektkonfiguration",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "fab6d91be7298087fb65dfb2808ef0e03a5e91cac23a3f143fec42cbbefc32a1"
+    },
+    {
+      "path": ".node-version",
+      "category": "Dependency-, Lock- und Toolchain-Dateien",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "6e775beae185bb3f5837d2f6d3fbe910e6f60e18fa507e661e312e84d707a92f"
+    },
+    {
+      "path": ".vscode-test.mjs",
+      "category": "Build-, Packaging- und Projektkonfiguration",
+      "purpose": "retained development configuration",
+      "sha256": "9956fe6718c734046d34b8558b2bf9038d062249d391aef032558bed32c701db"
+    },
+    {
+      "path": ".vscode/extensions.json",
+      "category": "Build-, Packaging- und Projektkonfiguration",
+      "purpose": "retained development configuration",
+      "sha256": "83e9d46faf2dd99b41985f3e860e825afd915126beea7fa84bacce5b97d026ec"
+    },
+    {
+      "path": ".vscode/launch.json",
+      "category": "Build-, Packaging- und Projektkonfiguration",
+      "purpose": "retained development configuration",
+      "sha256": "8ef3c906aa17d30258a354c70552d7927085e0e0ca21ed6ec7e984d9fd702aad"
+    },
+    {
+      "path": ".vscode/settings.json",
+      "category": "Build-, Packaging- und Projektkonfiguration",
+      "purpose": "retained development configuration",
+      "sha256": "8563b003bccedb29f251bf3f483e171fe86df3f824d9d163dbf69a57ea5c7856"
+    },
+    {
+      "path": ".vscode/tasks.json",
+      "category": "Build-, Packaging- und Projektkonfiguration",
+      "purpose": "retained development configuration",
+      "sha256": "46260eb3403e34037d6f1122bbe328aa9f52f086d84dc3a22d6f365f30ce1cea"
+    },
+    {
+      "path": ".vscodeignore",
+      "category": "Build-, Packaging- und Projektkonfiguration",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "92934ff2df801721b8c875352316880bf80207711b48e8906a0cc28068233268"
+    },
+    {
+      "path": "AGENTS.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "21b1f055687edb4db6379cb991f1fe6ce6e1021ac72f589be6a08b3756503dba"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "packaged runtime resource",
+      "sha256": "fae4082cdc66859151cb529413b25226a4c22bad41b56b047367ab03ff6ce589"
+    },
+    {
+      "path": "LICENSE",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "packaged runtime resource",
+      "sha256": "e5de8905441b2d05aed8c6077f09dddbf1d9871ef9c419df3f43a1f4f6c1be10"
+    },
+    {
+      "path": "README.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "packaged runtime resource",
+      "sha256": "ae23242618c6e5c08b0d542c1f8e4bc69c188c1fbd111289aa6b32877c87bd9b"
+    },
+    {
+      "path": "docs/DECISIONS.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "231d9287ad91d8f1a7fd14e11b34e5e5d50bea64e7c0708408f1b8aca22e7e68"
+    },
+    {
+      "path": "docs/ISSUES.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "370c694e05ed2a0353c31ec1ad4e24085c3642de068e3a249d80482a518867f9"
+    },
+    {
+      "path": "docs/PROJECT_STATUS.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "6723dda88173b4d277c70b167c4d912354a511c0b779e09e27edda5a9304ae9b"
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "da144588cd9df4c819e778726ece430c5ee46679f85e65ce9d51227090eae6ae"
+    },
+    {
+      "path": "docs/candidate-a-audit.json",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "9462a20c4f76a48be72b36dfa80ad1ed38bbc30a2f1cd0e639a642771a1b0751"
+    },
+    {
+      "path": "docs/candidate-a-graph.json",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "320c48b3435fbc2fccdc6cc202e84d304d3e12243ec1ed676d211774579e7edb"
+    },
+    {
+      "path": "docs/candidate-a-upgrade.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "a6dfe07a82f5bee4622c73ef24bb79a9252dc6da7e2b28a9dbe8ac6284714488"
+    },
+    {
+      "path": "docs/phase5-audit-after.json",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "40a38b3a82da81aa8cb5265ff198e4244fd0873aa293cf3652435e2f7910289e"
+    },
+    {
+      "path": "docs/phase5-audit-before.json",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "866d0f9f7bd72cbddc7b878ba43dd77be0c3a1185bf669332ce9f93219cec23e"
+    },
+    {
+      "path": "docs/phase5-toolchain.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "c44ce6b6f4f07833ffb4196c675c428de85c60120705ade78640028a5a415378"
+    },
+    {
+      "path": "docs/phase6-audit.json",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "9462a20c4f76a48be72b36dfa80ad1ed38bbc30a2f1cd0e639a642771a1b0751"
+    },
+    {
+      "path": "docs/phase6-evidence.json",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "90326522c055e9307bdb8adf593cb8704ca0cc6d23c504afc08b39e55bc2c4ec"
+    },
+    {
+      "path": "docs/phase6-packager-audit.json",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "61cbd63af5f226e67b074dec86d89b3c6cbd962e750d54a723dcfaf14ffe1224"
+    },
+    {
+      "path": "docs/phase6-readiness.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "847bef5a4f74890a0e5613badaf3588bd663e9af4c72f79359e6dd8904a99dbc"
+    },
+    {
+      "path": "docs/phase61-evidence.json",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "80025837f1ae6de34b6dd6016716f5069a5864f978ebff48e17dcf6da20c271a"
+    },
+    {
+      "path": "docs/phase61-http-compatibility.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "62658434829a337863f7bfd357ee78c71e112e1eab144c419402a300ce89fdc9"
+    },
+    {
+      "path": "docs/phase62-evidence.json",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "de65cfc32d5297bc619751331fc0137776cde19e912402db80f4b4296058ce1a"
+    },
+    {
+      "path": "docs/phase62-platform-runbook.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "38be7053dec1480adfe17d604ac82235c24b01498d6f701b8ece5a5153a783e5"
+    },
+    {
+      "path": "docs/phase62-readiness.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "e64b38fd554d5b9a96f30d78990092dc62cdb1993a21793a782ff22e3eb0f848"
+    },
+    {
+      "path": "docs/phase63-evidence.json",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "1940aab43f7f8148eee05eaaf87498469a7e56c8195f56417d4f7f9f6453d2da"
+    },
+    {
+      "path": "docs/phase63-platform-acceptance.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "7c1a916a78202b83cb9300ccc0b0a4ed94380e1bca8f0767c2154f08834800d8"
+    },
+    {
+      "path": "docs/phase7-evidence.json",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "required CI audit baseline",
+      "sha256": "af66914fa691ce667ff6ddb562206058659db13dc31b58692e7faed0e38704d1"
+    },
+    {
+      "path": "docs/phase7-removal.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "0c277171276b4235569964f7f721ad193f8adb0c801e925985d14d856902c202"
+    },
+    {
+      "path": "docs/phase8-ci.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "76638bf8339eb4cf9ad1cefcff518371d1842c0cf14592b8ac86245ad22e5a9e"
+    },
+    {
+      "path": "docs/phase8-evidence.json",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "a8f6c50c8f1eccdae9b9c1fce9ef583855ba960b7d6c69090ef20d713a3ebf4e"
+    },
+    {
+      "path": "docs/phase81-evidence.json",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "6d82634089efb9f1a60f87df420d5987e75e0abcf0e0c9bad2ffaaa325b12822"
+    },
+    {
+      "path": "docs/phase81-preparation.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "509e74bd407a389d5abf078b83a28395533cfbb329c7def3c12c8d648aae284d"
+    },
+    {
+      "path": "docs/phase82-evidence.json",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "1da4c15811773338ddadffab06bacdb1747c1724f3ec37d4c466b03f2405527d"
+    },
+    {
+      "path": "docs/phase82-packager.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "9f1b97ebc69e7c753377486c3664af0d7dd98651ce1b1c12ce3368e5cd8a31a0"
+    },
+    {
+      "path": "docs/phase83-deployment.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "a43447bf452ce8fec79e9792a94d8c1165e22e716c2e442e027f87d4647f3ce8"
+    },
+    {
+      "path": "docs/phase83-manifest.json",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": null
+    },
+    {
+      "path": "docs/release-plan.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "3236f6b012a941077c19ad644917d325fe72cbe21ae0cc8aa5332ced45ea1dfd"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "category": "Build-, Packaging- und Projektkonfiguration",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "2192d0e761facc98f31291105b9e3f76a5ab3f11b4a69a5ab72de3af0186f9fc"
+    },
+    {
+      "path": "images/icon.png",
+      "category": "Build-, Packaging- und Projektkonfiguration",
+      "purpose": "packaged runtime resource",
+      "sha256": "d6ce1df8710a52ee2ea1dcf2f83d6831118130e42e46e50c5ff6318fc72822a2"
+    },
+    {
+      "path": "package.json",
+      "category": "Dependency-, Lock- und Toolchain-Dateien",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "03385288adcf92e1726c157c4459bcf4e31c172ccc2a5c15d835d049f1f03ac7"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "category": "Dependency-, Lock- und Toolchain-Dateien",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "33e277a06c5c4fb0371bd00a91ae00264398b3862c86d5d409f2914abe07e447"
+    },
+    {
+      "path": "pnpm-workspace.yaml",
+      "category": "Dependency-, Lock- und Toolchain-Dateien",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "45f850c7e81e0da9bdcde55cb683764e3925885060bcf475b78118f8d6c8ab51"
+    },
+    {
+      "path": "scripts/ci/bootstrap.cjs",
+      "category": "CI-Workflow und Orchestrierung",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "fb858436c0980610c18f50294be04bded9ea8910d88cd3be1751b04aa44794ec"
+    },
+    {
+      "path": "scripts/ci/ci.test.cjs",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "f6947a73a5d388a7137f0fd50c39ee42707770fe4110359e3b64d5ed7b1c8556"
+    },
+    {
+      "path": "scripts/ci/host.cjs",
+      "category": "CI-Workflow und Orchestrierung",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "2c099239b1e58c4d206130272d0f42598b0294d2d2d51a64a40c138267b79a50"
+    },
+    {
+      "path": "scripts/ci/installed-entry.cjs",
+      "category": "CI-Workflow und Orchestrierung",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "11d6ea249d141d094c6fe19cd353575364b26ea949c951b37f1aa5015e508276"
+    },
+    {
+      "path": "scripts/ci/lib.cjs",
+      "category": "CI-Workflow und Orchestrierung",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "12b55269c912afe1161d44d884222b072f6d6a3e9f8f13f269a00c505609efa0"
+    },
+    {
+      "path": "scripts/ci/run-hosts.cjs",
+      "category": "CI-Workflow und Orchestrierung",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "488a12e225f9df36e8c33c7a56e3cd6ecf88d5c301947a3b8e3dbe5b2a88cec3"
+    },
+    {
+      "path": "scripts/ci/tasks.cjs",
+      "category": "CI-Workflow und Orchestrierung",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "8ac3b93b4c5812073507dff887160eefbc72627d83fe0bbdac23690e25107e95"
+    },
+    {
+      "path": "scripts/compatibility-probe.cjs",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "65f2be8407eef32deb84bcfb924f7bcb136da1925e0387f4833704a13c07c396"
+    },
+    {
+      "path": "scripts/http-node16-regression.cjs",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "07d7d011ae9fca9e69fb1b731b163d78ddd1a4feaaeca381642cbd9b429d3ec6"
+    },
+    {
+      "path": "scripts/inspect-test-vsix.cjs",
+      "category": "Build-, Packaging- und Projektkonfiguration",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "7825737fb83d457f75ffaefd69ff74b0a790e7acd97311549f4e497b226ef3b1"
+    },
+    {
+      "path": "scripts/installed-platform-suite.cjs",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "39fb0833dbbd653f246301810090b381668a6847985699b6981424d1bc91e142"
+    },
+    {
+      "path": "scripts/package-test-vsix.cjs",
+      "category": "Build-, Packaging- und Projektkonfiguration",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "25a915717dc3e9d6579885cbc81f1932159fb52ef8d6831b95498c89371c8e40"
+    },
+    {
+      "path": "scripts/package-validation.cjs",
+      "category": "Build-, Packaging- und Projektkonfiguration",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "9cf98c2e0c6ea5ac3458ea21c3887f6171e4944e17b6bccab7f77c27a0b89610"
+    },
+    {
+      "path": "scripts/package-validation.test.cjs",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "f325587119a211021b367bcdfbb62e0bfe7163f2c5c2c3f371274bcc1a6fac11"
+    },
+    {
+      "path": "scripts/proxy-compatibility-probe.cjs",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "retained additional validation probe",
+      "sha256": "b7f5015cd0861b5e7d3775695777ebf86341896347644dc42a64588d4b69cf5b"
+    },
+    {
+      "path": "scripts/test-headless.cjs",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "651b5f53ea2bbf487d3cb621ec77f45e729ed3f150c7bea6e3641f77b7164e20"
+    },
+    {
+      "path": "scripts/tls-transport-probe.cjs",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "050cb6ae093a12061b7d30e0492a8565159e63280418b7795afa17a26c6d2de8"
+    },
+    {
+      "path": "src/extension.ts",
+      "category": "Produktiver Extension-Code und genehmigte native Löschungen",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "3604f1b90b374cd457ef943ac21119a4b4d983aa947c786da110ebc123d0df2a"
+    },
+    {
+      "path": "src/security.ts",
+      "category": "Produktiver Extension-Code und genehmigte native Löschungen",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "490d412fd5739e2e5e861e519c49c517d5de36b7618befb58728110025716b9d"
+    },
+    {
+      "path": "src/test/extension.test.ts",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "6286d2b97121e5fbe38fafa5636d7563a781c1bc5fb14c363d8fc901c78a0de3"
+    },
+    {
+      "path": "src/test/generation.test.ts",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "240da44ddc0426df3d123e078ff414ea72d01164c13bbf4442e765520db159f6"
+    },
+    {
+      "path": "src/test/git.integration.test.ts",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "22f9351a0144fa4b7b7ca6a7120b8dd203d710a2e5a5f307d82c8e7c59c80426"
+    },
+    {
+      "path": "src/test/lifecycle.test.ts",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "079d0c76d282e4b0170408c14b99edeb7cc9fd1188a5c5bd4f0a6bb7cd7686f1"
+    },
+    {
+      "path": "src/test/provider.test.ts",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "0a1e0697969ea0914b2b7eb968be84f5713c2344c62e20120a4091555b0155fe"
+    },
+    {
+      "path": "src/test/security.test.ts",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "323c398c3082d8e1a31583c7dc7d8af8bdfbc45868427a72c62d612b77849962"
+    },
+    {
+      "path": "src/test/transport-fixture.ts",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "b3a0bcdc4b20e060bdb82254c9110eba81b481e1ef294848faa444607ebfbb11"
+    },
+    {
+      "path": "src/test/transport.test.ts",
+      "category": "Tests und kontrollierte Plattformprobes",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "b116f51e843d3bf07e5005e818b5a5759967b6efbdb4ada9feb024f61702b36d"
+    },
+    {
+      "path": "src/transport.ts",
+      "category": "Produktiver Extension-Code und genehmigte native Löschungen",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "2ba6c9e302c454f6717b0e193087ac25c27ceaae9c548c4b728f514078d353a1"
+    },
+    {
+      "path": "tsconfig.json",
+      "category": "Build-, Packaging- und Projektkonfiguration",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "486fcfcebf55f4f6b2c255abdf9afc7704507205d12457f801f9fd1f2ae81226"
+    },
+    {
+      "path": "vsc-extension-quickstart.md",
+      "category": "Dokumentation und Nachweise",
+      "purpose": "included for documentation and approval traceability",
+      "sha256": "4cb1ec249543d8543513076c88bd90f38b9a2f84452ae8b95c3fd4993ae035c1"
+    },
+    {
+      "path": "webpack.config.js",
+      "category": "Build-, Packaging- und Projektkonfiguration",
+      "purpose": "product, build or test prerequisite",
+      "sha256": "caeb6e4e707f9670fb8f5207b4501657db02b8b943ad93389b0e67e83076ec8e"
+    }
+  ],
+  "security": {
+    "patternScan": {
+      "scannedFiles": 85,
+      "findings": [
+        {
+          "type": "credentialLiteral",
+          "file": "docs/phase82-evidence.json",
+          "line": 483,
+          "literalLength": 5,
+          "dummyMarker": false,
+          "symbolic": false
+        },
+        {
+          "type": "binary",
+          "file": "images/icon.png",
+          "bytes": 32001,
+          "allowedIcon": true
+        },
+        {
+          "type": "credentialLiteral",
+          "file": "scripts/tls-transport-probe.cjs",
+          "line": 17,
+          "literalLength": 20,
+          "dummyMarker": true,
+          "symbolic": false
+        },
+        {
+          "type": "credentialURL",
+          "file": "src/test/security.test.ts",
+          "line": 144,
+          "literalLength": 19,
+          "dummyMarker": true,
+          "symbolic": false
+        },
+        {
+          "type": "credentialLiteral",
+          "file": "src/test/security.test.ts",
+          "line": 292,
+          "literalLength": 19,
+          "dummyMarker": true,
+          "symbolic": false
+        },
+        {
+          "type": "credentialLiteral",
+          "file": "src/test/transport.test.ts",
+          "line": 11,
+          "literalLength": 26,
+          "dummyMarker": true,
+          "symbolic": false
+        }
+      ],
+      "absoluteLocalPaths": [
+        {
+          "file": "docs/phase63-evidence.json",
+          "occurrences": 4,
+          "lines": [
+            15,
+            19,
+            23,
+            25
+          ]
+        },
+        {
+          "file": "scripts/ci/tasks.cjs",
+          "occurrences": 2,
+          "lines": [
+            22
+          ]
+        }
+      ],
+      "ignored": {
+        "count": 29251,
+        "groups": {
+          ".github/packager/node_modules/**": 12408,
+          "dist/**": 2,
+          "node_modules/**": 16819,
+          "out/**": 22
+        },
+        "unexpectedTopLevel": []
+      },
+      "notes": [
+        "Pattern-based scan only, not proof of secret absence",
+        "Secret-like matched values intentionally not printed",
+        "Local path metadata in historical reports requires explicit publication awareness"
+      ]
+    },
+    "secretlint": {
+      "tool": "existing isolated @secretlint/node",
+      "toolVersion": "10.2.2",
+      "scanned": 84,
+      "ok": true,
+      "findings": [],
+      "rawSensitiveValuesStored": false
+    },
+    "manualReview": {
+      "trueSecretsFound": 0,
+      "credentialPatternMatches": 5,
+      "dummyMatches": 4,
+      "falsePositiveVersionInJsonwebtoken": 1,
+      "onlyBinary": "existing images/icon.png",
+      "personalPathMetadataRequiresExplicitApproval": false,
+      "rawCredentialValuesStored": false
+    }
+  },
+  "checks": {
+    "actionlint": {
+      "version": "1.7.12",
+      "exit": 0,
+      "shellcheck": false,
+      "pyflakes": false
+    },
+    "CItests": {
+      "passed": 16
+    },
+    "fullProductSuiteRerun": false,
+    "lastFullValidation": "docs/phase82-evidence.json"
+  },
+  "constraints": {
+    "branchCreation": false,
+    "staging": false,
+    "commit": false,
+    "push": false,
+    "fetch": false,
+    "liveRemoteQuery": true,
+    "dispatch": false,
+    "repositoryAdministration": false,
+    "productChanges": false,
+    "dependencyChanges": false,
+    "cloudRun": false
+  },
+  "repositoryPolicyStatus": "public metadata inspected; authenticated permissions and runner access remain unverified",
+  "privacy": {
+    "files": [
+      {
+        "file": "docs/candidate-a-upgrade.md",
+        "before": "da367868a802ef9717e3530eb2ab01df7eb2e3789edcbb8849d8fc3cdda980d0",
+        "after": "a6dfe07a82f5bee4622c73ef24bb79a9252dc6da7e2b28a9dbe8ac6284714488"
+      },
+      {
+        "file": "docs/phase62-evidence.json",
+        "before": "8dac46f07b7dc4c6666eebb6709cb40fbf88d33dff44c1b5cff56c6fee58fb5c",
+        "after": "de65cfc32d5297bc619751331fc0137776cde19e912402db80f4b4296058ce1a"
+      },
+      {
+        "file": "docs/phase63-evidence.json",
+        "before": "855f9a7071dfdfa2476c7d3e4e380bfe35cd5348405a1878ac85f48754b7d29e",
+        "after": "1940aab43f7f8148eee05eaaf87498469a7e56c8195f56417d4f7f9f6453d2da"
+      },
+      {
+        "file": "docs/phase7-evidence.json",
+        "before": "2b8f17d63797291bf158f5b6389035f4aceb8780f2bd3d5f0b09cb864ee10d24",
+        "after": "af66914fa691ce667ff6ddb562206058659db13dc31b58692e7faed0e38704d1"
+      },
+      {
+        "file": "docs/phase8-evidence.json",
+        "before": "1316c14c4cadffe90d7c0b8fc5324c4a47e6dcf9cab82f27167721881c9f99d9",
+        "after": "a8f6c50c8f1eccdae9b9c1fce9ef583855ba960b7d6c69090ef20d713a3ebf4e"
+      },
+      {
+        "file": "docs/phase81-evidence.json",
+        "before": "9d034ae188d007a3d3ad2518573e3b9cc31343c6cba9e8067b04bf2aa8ea09a2",
+        "after": "6d82634089efb9f1a60f87df420d5987e75e0abcf0e0c9bad2ffaaa325b12822"
+      },
+      {
+        "file": "docs/phase82-evidence.json",
+        "before": "039cc4f9742ed051519b218e8023ffba9022f81eba383ffe0d400603b63d9710",
+        "after": "1da4c15811773338ddadffab06bacdb1747c1724f3ec37d4c466b03f2405527d"
+      }
+    ],
+    "auditBaselineSHA256": "943f26c779e65a00e22bdb23110a3c717b5cbf667cbb367785e99a9a7ae05fc4",
+    "auditObjectsDeepEqual": true,
+    "jsonOnlyPathStringsChanged": true
+  },
+  "livePreflight": {
+    "main": "0a2c0860dea969e3a42f24802c3418c3ea545aab",
+    "targetBranchExists": false,
+    "visibility": "public",
+    "defaultBranch": "main",
+    "visibleRules": 0,
+    "visibleRulesets": 0,
+    "visibleWorkflows": 0,
+    "visibleRuns": 0,
+    "actionsPermissionsHTTP": 401,
+    "writePermissionVerified": false,
+    "runnerLabelsDocumented": [
+      "windows-2025",
+      "ubuntu-22.04",
+      "macos-15-intel"
+    ],
+    "repositoryRunnerAvailabilityVerified": false
+  },
+  "scopeProof": {
+    "modifiedExistingFiles": [
+      "docs/DECISIONS.md",
+      "docs/ISSUES.md",
+      "docs/PROJECT_STATUS.md",
+      "docs/candidate-a-upgrade.md",
+      "docs/phase62-evidence.json",
+      "docs/phase63-evidence.json",
+      "docs/phase7-evidence.json",
+      "docs/phase8-evidence.json",
+      "docs/phase81-evidence.json",
+      "docs/phase82-evidence.json"
+    ],
+    "unchangedExistingFiles": 73,
+    "newFiles": [
+      "docs/phase83-deployment.md",
+      "docs/phase83-manifest.json"
+    ],
+    "historicalReportsUnchanged": 19,
+    "redactedHistoricalFiles": [
+      "docs/candidate-a-upgrade.md",
+      "docs/phase62-evidence.json",
+      "docs/phase63-evidence.json",
+      "docs/phase7-evidence.json",
+      "docs/phase8-evidence.json",
+      "docs/phase81-evidence.json",
+      "docs/phase82-evidence.json"
+    ],
+    "noProductTestToolchainWorkflowChanges": true,
+    "gitMetadataFingerprintsUnchanged": true,
+    "stagedPaths": 0,
+    "branch": "main",
+    "HEAD": "0a2c0860dea969e3a42f24802c3418c3ea545aab",
+    "manifestCommitPaths": 77,
+    "retainedFiles": 11,
+    "noUnexpectedBinariesOrSymlinks": true,
+    "iconIdenticalToHEAD": true,
+    "scope": "No Git/GitHub writes; local documentation preparation only"
+  },
+  "documentationChecks": {
+    "links": 157,
+    "failures": [],
+    "workflowJobs": 3,
+    "hostCombinations": 6,
+    "vsixBuildCalls": 1,
+    "advisoryRows": 57
+  },
+  "selfHash": "deliberately omitted to avoid recursive manifest hashing; final SHA256 recorded separately"
+}
